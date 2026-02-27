@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scores & Results — Pistakee Bay Invitational</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-deep:   #16311f;
+  --green-dark:   #1e4228;
+  --green-mid:    #2a5c38;
+  --green-light:  #3d7a4e;
+  --gold:         #c4913a;
+  --gold-light:   #deb96a;
+  --gold-pale:    #f0dba0;
+  --cream:        #f8f2e6;
+  --cream-dark:   #ede3cc;
+  --cream-deeper: #e0d0b0;
+  --brown-dark:   #3a1f08;
+  --text:         #1e160a;
+  --text-mid:     #3a2c18;
+  --text-light:   #6b5030;
+  --white:        #fdfaf4;
+  --red:          #8b2020;
+  --blue:         #1a3a5c;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(22,49,31,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(196,145,58,0.25);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.nav-logo-img { width: 36px; height: 36px; }
+
+.nav-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  line-height: 1.25;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(240,219,160,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--green-deep);
+  padding: 7rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(42,92,56,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: 70px; left: 40px; right: 40px; bottom: 20px;
+  border: 1px solid rgba(196,145,58,0.08);
+  pointer-events: none;
+}
+
+.page-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.page-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  position: relative;
+}
+
+.page-title span { color: var(--gold-light); }
+
+.page-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 1.2rem auto 0;
+  position: relative;
+}
+
+/* ── TAB NAV ── */
+.tab-bar {
+  background: var(--green-dark);
+  border-bottom: 1px solid rgba(196,145,58,0.2);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 62px;
+  z-index: 50;
+}
+
+.tab-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(240,219,160,0.55);
+  background: none;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+}
+
+.tab-btn:hover { color: var(--gold-light); }
+
+.tab-btn.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+  background: rgba(196,145,58,0.06);
+}
+
+/* ── PANELS ── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── LEADERBOARD PANEL ── */
+.leaderboard-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.lb-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lb-title-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+.lb-title-block p {
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+.lb-legend {
+  display: flex;
+  gap: 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+  align-items: center;
+}
+
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.dot-gold { background: var(--gold); }
+.dot-green { background: var(--green-mid); }
+
+/* Admin toggle */
+.admin-toggle-wrap {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.admin-toggle-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  background: var(--green-deep);
+  color: rgba(240,219,160,0.6);
+  border: 1px solid rgba(196,145,58,0.2);
+  border-radius: 3px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-toggle-btn:hover {
+  color: var(--gold-light);
+  border-color: var(--gold);
+}
+
+/* Score input modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22,49,31,0.85);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(22,49,31,0.4);
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--green-mid), var(--gold));
+}
+
+.modal h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--green-deep);
+  margin-bottom: 0.3rem;
+}
+
+.modal-player-name {
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-field {
+  margin-bottom: 1rem;
+}
+
+.modal-field label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--text-light);
+  margin-bottom: 0.4rem;
+}
+
+.modal-field input {
+  width: 100%;
+  border: 1px solid var(--cream-deeper);
+  border-radius: 3px;
+  padding: 0.65rem 0.9rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-field input:focus { border-color: var(--gold); }
+
+.modal-net {
+  background: var(--cream-dark);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-net-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+}
+
+.modal-net-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+.modal-btns {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-save {
+  flex: 1;
+  background: var(--green-deep);
+  color: var(--gold-light);
+  border: none;
+  border-radius: 3px;
+  padding: 0.75rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-save:hover { opacity: 0.85; }
+
+.btn-cancel {
+  background: none;
+  border: 1px solid var(--cream-deeper);
+  border-radius: 3px;
+  padding: 0.75rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.btn-cancel:hover { border-color: var(--gold); }
+
+/* ── LEADERBOARD TABLE ── */
+.lb-table-wrap {
+  overflow-x: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 30px rgba(22,49,31,0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 0.95rem;
+}
+
+thead tr {
+  background: var(--green-deep);
+}
+
+thead th {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(240,219,160,0.8);
+  padding: 1rem 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--gold);
+}
+
+thead th.left { text-align: left; padding-left: 1.2rem; }
+
+tbody tr {
+  border-bottom: 1px solid var(--cream-dark);
+  transition: background 0.15s;
+  cursor: default;
+}
+
+tbody tr:hover { background: rgba(196,145,58,0.04); }
+tbody tr:last-child { border-bottom: none; }
+
+tbody tr.rank-1 { background: rgba(196,145,58,0.07); }
+tbody tr.rank-1:hover { background: rgba(196,145,58,0.12); }
+
+td {
+  padding: 0.85rem 0.8rem;
+  text-align: center;
+  color: var(--text-mid);
+}
+
+td.left { text-align: left; padding-left: 1.2rem; }
+
+.rank-cell {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-light);
+  width: 40px;
+}
+
+.rank-1 .rank-cell { color: var(--gold); font-size: 0.9rem; }
+.rank-2 .rank-cell { color: var(--text-mid); }
+.rank-3 .rank-cell { color: var(--brown-dark); }
+
+.player-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.player-name .winner-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  background: var(--gold);
+  color: var(--green-deep);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.hcp-cell {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.score-cell {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.score-cell.empty {
+  color: var(--cream-deeper);
+  font-family: 'EB Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.net-cell {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.net-cell.leading { color: var(--green-mid); }
+.net-cell.empty {
+  color: var(--cream-deeper);
+  font-family: 'EB Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.to-par {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.to-par.under { color: var(--red); }
+.to-par.over { color: var(--text-light); }
+.to-par.even { color: var(--green-mid); }
+
+.edit-btn {
+  background: none;
+  border: 1px solid rgba(196,145,58,0.3);
+  border-radius: 2px;
+  color: rgba(196,145,58,0.6);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  display: none;
+}
+
+.admin-mode .edit-btn { display: inline-block; }
+.edit-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Putts cell */
+.putts-cell {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Prior years columns */
+.prior-score {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* ── TROPHY WINNERS ── */
+.trophy-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.trophy-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.trophy-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+.trophy-header p {
+  font-style: italic;
+  color: var(--text-light);
+  margin-top: 0.4rem;
+}
+
+.trophy-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1rem auto 0;
+}
+
+.trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.trophy-card {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.trophy-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--green-mid), var(--gold));
+}
+
+.trophy-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(22,49,31,0.1);
+}
+
+.trophy-card.recent {
+  background: var(--green-deep);
+  border-color: var(--gold);
+}
+
+.trophy-card.recent::before {
+  height: 4px;
+  background: var(--gold);
+}
+
+.trophy-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.trophy-card.recent .trophy-year { color: var(--gold-light); opacity: 0.8; }
+
+.trophy-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.3;
+}
+
+.trophy-card.recent .trophy-name { color: var(--cream); }
+
+.trophy-icon-sm {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.trophy-note {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.trophy-card.recent .trophy-note { color: rgba(240,219,160,0.5); }
+
+/* Covid card */
+.trophy-card.covid { background: var(--cream-dark); opacity: 0.7; }
+.trophy-card.covid .trophy-name { color: var(--text-light); font-style: italic; }
+
+/* ── ALL-TIME STATS ── */
+.stats-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.stat-card-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.stat-card-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1;
+}
+
+.stat-card-label {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.4rem;
+}
+
+.multi-win-table {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.multi-win-table h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--green-deep);
+  color: var(--cream);
+  border-bottom: 2px solid var(--gold);
+}
+
+.mw-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.mw-row:last-child { border-bottom: none; }
+.mw-row:nth-child(even) { background: rgba(196,145,58,0.03); }
+
+.mw-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mw-wins {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: rgba(196,145,58,0.1);
+  padding: 0.2rem 0.7rem;
+  border-radius: 10px;
+}
+
+.mw-years {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--brown-dark);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(196,145,58,0.2);
+}
+
+.footer-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(196,145,58,0.45);
+}
+
+@media (max-width: 700px) {
+  .tab-btn { padding: 0.8rem 1rem; font-size: 0.55rem; }
+  .lb-header { flex-direction: column; align-items: flex-start; }
+  thead th, td { padding: 0.7rem 0.4rem; font-size: 0.85rem; }
+  .prior-score { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="88" fill="#1a1a1a" stroke="#c4913a" stroke-width="4"/>
+      <circle cx="100" cy="100" r="76" fill="none" stroke="#c4913a" stroke-width="1.5" opacity="0.5"/>
+      <rect x="72" y="68" width="14" height="64" rx="2" fill="#f8f2e6"/>
+      <path d="M86 68 Q128 68 128 86 Q128 104 86 104 Z" fill="#f8f2e6"/>
+      <path d="M86 78 Q116 78 116 86 Q116 94 86 94 Z" fill="#1a1a1a"/>
+      <path id="na1" d="M 28,100 A 72,72 0 0,1 172,100" fill="none"/>
+      <text font-size="13" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="700" letter-spacing="3">
+        <textPath href="#na1" startOffset="50%" text-anchor="middle">PISTAKEE</textPath>
+      </text>
+      <path id="na2" d="M 32,104 A 68,68 0 0,0 168,104" fill="none"/>
+      <text font-size="11" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="400" letter-spacing="2">
+        <textPath href="#na2" startOffset="50%" text-anchor="middle">COUNTRY CLUB</textPath>
+      </text>
+    </svg>
+    <div class="nav-logo-text">Pistakee Bay<br>Invitational</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">History</a></li>
+    <li><a href="#">Tournament</a></li>
+    <li><a href="scores.html" class="active">Scores</a></li>
+    <li><a href="#">Gallery</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">Pistakee Bay Invitational</div>
+  <h1 class="page-title">Scores &amp; <span>Results</span></h1>
+  <div class="page-rule"></div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('leaderboard')">2026 Leaderboard</button>
+  <button class="tab-btn" onclick="showTab('trophy')">Trophy Winners</button>
+  <button class="tab-btn" onclick="showTab('alltime')">All-Time Records</button>
+</div>
+
+<!-- ══════════════════════════════════
+     PANEL 1: 2026 LEADERBOARD
+══════════════════════════════════ -->
+<div class="panel active" id="panel-leaderboard">
+  <div class="leaderboard-wrap">
+
+    <div class="lb-header">
+      <div class="lb-title-block">
+        <h2>2026 Pistakee Bay Open</h2>
+        <p>18-hole stroke play · Par 72 · Net scores determine the champion</p>
+      </div>
+      <div class="lb-legend">
+        <span><span class="legend-dot dot-gold"></span>Handicap = (Avg of last 2 years) − Par 72</span>
+      </div>
+    </div>
+
+    <div class="admin-toggle-wrap" style="display:flex;gap:0.6rem;justify-content:flex-end;align-items:center;">
+      <button class="admin-toggle-btn" id="clear-btn" onclick="clearScores()" style="display:none;color:rgba(200,100,100,0.7);border-color:rgba(200,100,100,0.3);">✕ Clear All Scores</button>
+      <button class="admin-toggle-btn" onclick="toggleAdmin()">⚙ Enter Scores</button>
+    </div>
+
+    <div class="lb-table-wrap">
+      <table id="lb-table">
+        <thead>
+          <tr>
+            <th class="left" style="width:40px">#</th>
+            <th class="left">Player</th>
+            <th>HCP</th>
+            <th>2024</th>
+            <th>2025</th>
+            <th>2026 Gross</th>
+            <th>2026 Net</th>
+            <th>To Par</th>
+            <th>Putts</th>
+            <th class="admin-col" style="display:none"></th>
+          </tr>
+        </thead>
+        <tbody id="lb-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:1.5rem; font-family:'EB Garamond',serif; font-style:italic; font-size:0.85rem; color:var(--text-light); text-align:center;">
+      Net Score = Gross Score − Handicap &nbsp;·&nbsp; Handicap = Average of last 2 years' gross scores − Par (72)
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PANEL 2: TROPHY WINNERS
+══════════════════════════════════ -->
+<div class="panel" id="panel-trophy">
+  <div class="trophy-wrap">
+    <div class="trophy-header">
+      <h2>Roll of Champions</h2>
+      <p>Every name on the trophy, from 2011 to today</p>
+      <div class="trophy-rule"></div>
+    </div>
+    <div class="trophy-grid" id="trophy-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PANEL 3: ALL-TIME RECORDS
+══════════════════════════════════ -->
+<div class="panel" id="panel-alltime">
+  <div class="stats-wrap">
+
+    <div class="trophy-header">
+      <h2>All-Time Records</h2>
+      <p>Based on known results, 2011–2025</p>
+      <div class="trophy-rule"></div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-eyebrow">Most Wins</div>
+        <div class="stat-card-value">2</div>
+        <div class="stat-card-label">Multiple players — see below</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-eyebrow">Lowest Handicap (2026)</div>
+        <div class="stat-card-value">−2</div>
+        <div class="stat-card-label">Will McCabe</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-eyebrow">Highest Handicap (2026)</div>
+        <div class="stat-card-value">+39</div>
+        <div class="stat-card-label">Mike Goldrick</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-eyebrow">Years on Record</div>
+        <div class="stat-card-value">14</div>
+        <div class="stat-card-label">2011–2025 (excl. 2020 COVID)</div>
+      </div>
+    </div>
+
+    <div class="multi-win-table">
+      <h3>🏆 Multiple Trophy Winners</h3>
+      <div class="mw-row">
+        <span class="mw-name">Dan Goldrick</span>
+        <span class="mw-years">2024 · 2021?</span>
+        <span class="mw-wins">2 wins</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">TJ McCabe</span>
+        <span class="mw-years">2024 · prior</span>
+        <span class="mw-wins">2 wins</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Jack Pierce</span>
+        <span class="mw-years">2017 · prior</span>
+        <span class="mw-wins">noted in records</span>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; background:var(--cream-dark); border-radius:4px; padding:1.5rem; font-family:'EB Garamond',serif; font-style:italic; color:var(--text-light); font-size:0.9rem; text-align:center;">
+      More historical records will be added as older scorecards are digitized. If you have records from pre-2011 tournaments, contact a tournament organizer.
+    </div>
+
+  </div>
+</div>
+
+<!-- SCORE ENTRY MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>Enter Score</h3>
+    <div class="modal-player-name" id="modal-player-name">Player Name</div>
+    <div class="modal-field">
+      <label>Gross Score (18-hole stroke play)</label>
+      <input type="number" id="modal-gross" placeholder="e.g. 88" min="50" max="150"
+             oninput="updateModalNet()">
+    </div>
+    <div class="modal-field">
+      <label>Putts</label>
+      <input type="number" id="modal-putts" placeholder="e.g. 32" min="10" max="60">
+    </div>
+    <div class="modal-net">
+      <span class="modal-net-label">Calculated Net Score</span>
+      <span class="modal-net-value" id="modal-net-display">—</span>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-save" onclick="saveScore()">Save Score</button>
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-text">Pistakee Bay Invitational &mdash; Est. 1950s &mdash; McHenry, Illinois</p>
+</footer>
+
+<script>
+// ══════════════════════════════════════
+// DATA
+// ══════════════════════════════════════
+const PAR = 72;
+
+const players2026 = [
+  { name: "Bill Crawford",       hcp: 6,   score2024: 79,  score2025: 76,  gross: null, putts: null },
+  { name: "Tom Goldrick",        hcp: 18,  score2024: 93,  score2025: 87,  gross: null, putts: null },
+  { name: "Joe Goldrick",        hcp: 34,  score2024: 104, score2025: 107, gross: null, putts: null },
+  { name: "Tim McCabe",          hcp: 13,  score2024: 83,  score2025: 87,  gross: null, putts: null },
+  { name: "Gary Micetich",       hcp: 13,  score2024: 85,  score2025: 84,  gross: null, putts: null },
+  { name: "Kyle Nieman",         hcp: 25,  score2024: 94,  score2025: 99,  gross: null, putts: null },
+  { name: "Mike Goldrick",       hcp: 39,  score2024: 116, score2025: 106, gross: null, putts: null },
+  { name: "Bill McCabe",         hcp: 10,  score2024: 87,  score2025: 76,  gross: null, putts: null },
+  { name: "Patrick McCabe",      hcp: 15,  score2024: 85,  score2025: 89,  gross: null, putts: null },
+  { name: "John Goldrick",       hcp: 22,  score2024: 90,  score2025: 97,  gross: null, putts: null },
+  { name: "Fred Gamber",         hcp: 9,   score2024: 81,  score2025: 80,  gross: null, putts: null },
+  { name: "Dan Goldrick",        hcp: 9,   score2024: 85,  score2025: 77,  gross: null, putts: null },
+  { name: "Joe Goldrick Jr.",    hcp: 14,  score2024: 82,  score2025: 90,  gross: null, putts: null },
+  { name: "Tom Goldrick Jr.",    hcp: 21,  score2024: 92,  score2025: 94,  gross: null, putts: null },
+  { name: "Jack Goldrick Jr.",   hcp: 20,  score2024: 88,  score2025: 96,  gross: null, putts: null },
+  { name: "Jack Pierce",         hcp: 5,   score2024: 76,  score2025: 77,  gross: null, putts: null },
+  { name: "Ryan Pierce",         hcp: 14,  score2024: 87,  score2025: 85,  gross: null, putts: null },
+  { name: "George McCabe",       hcp: 23,  score2024: 98,  score2025: 91,  gross: null, putts: null },
+  { name: "Will McCabe",         hcp: -2,  score2024: 71,  score2025: 70,  gross: null, putts: null },
+  { name: "Martin Goldrick",     hcp: 30,  score2024: 106, score2025: 98,  gross: null, putts: null },
+  { name: "Jay Goldrick",        hcp: 18,  score2024: 89,  score2025: 91,  gross: null, putts: null },
+  { name: "TJ McCabe",           hcp: 24,  score2024: 87,  score2025: 99,  gross: null, putts: null },
+  { name: "Tim Goldrick",        hcp: 35,  score2024: 111, score2025: 102, gross: null, putts: null },
+];
+
+const trophyWinners = [
+  { year: 2025, name: "TBD",              note: "Tournament upcoming" },
+  { year: 2024, name: "Dan Goldrick",     note: "" },
+  { year: 2024, name: "TJ McCabe",        note: "Co-winner" },
+  { year: 2023, name: "Mike Goldrick",    note: "" },
+  { year: 2022, name: "Patrick McCabe",   note: "" },
+  { year: 2021, name: "Bill Crawford",    note: "" },
+  { year: 2020, name: "COVID-19",         note: "Tournament cancelled", covid: true },
+  { year: 2019, name: "Martin Goldrick",  note: "" },
+  { year: 2018, name: "Tim Goldrick",     note: "" },
+  { year: 2017, name: "Jack Pierce",      note: "" },
+  { year: 2016, name: "Gary Micetich",    note: "" },
+  { year: 2015, name: "Joe Goldrick Jr.", note: "" },
+  { year: 2014, name: "Jack Goldrick Jr.",note: "" },
+  { year: 2013, name: "Bill McCabe",      note: "" },
+  { year: 2012, name: "Tom Goldrick Jr.", note: "" },
+  { year: 2011, name: "Uncle John",       note: "John Goldrick" },
+];
+
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
+let adminMode = false;
+let editingIdx = null;
+let scores = [...players2026]; // working copy
+
+// ══════════════════════════════════════
+// RENDER LEADERBOARD
+// ══════════════════════════════════════
+function getNet(p) {
+  return p.gross !== null ? p.gross - p.hcp : null;
+}
+
+function getToParStr(net) {
+  if (net === null) return null;
+  const diff = net - PAR;
+  if (diff === 0) return { str: 'E', cls: 'even' };
+  if (diff > 0)  return { str: '+' + diff, cls: 'over' };
+  return { str: String(diff), cls: 'under' };
+}
+
+function renderLeaderboard() {
+  // Sort: scored players by net first, then unscored alphabetically
+  const scored   = scores.filter(p => p.gross !== null).sort((a,b) => getNet(a) - getNet(b));
+  const unscored = scores.filter(p => p.gross === null).sort((a,b) => a.name.localeCompare(b.name));
+  const sorted   = [...scored, ...unscored];
+
+  const tbody = document.getElementById('lb-body');
+  tbody.innerHTML = '';
+
+  sorted.forEach((p, i) => {
+    const net    = getNet(p);
+    const rank   = p.gross !== null ? i + 1 : '—';
+    const toPar  = getToParStr(net);
+    const isFirst = rank === 1;
+
+    const tr = document.createElement('tr');
+    if (isFirst) tr.classList.add('rank-1');
+    if (rank === 2) tr.classList.add('rank-2');
+    if (rank === 3) tr.classList.add('rank-3');
+
+    const hcpDisplay = p.hcp >= 0 ? p.hcp : '−' + Math.abs(p.hcp);
+
+    tr.innerHTML = `
+      <td class="left rank-cell">${rank === 1 ? '🏆' : rank}</td>
+      <td class="left">
+        <span class="player-name">${p.name}${isFirst && p.gross !== null ? '<span class="winner-badge">LEADING</span>' : ''}</span>
+      </td>
+      <td class="hcp-cell">${hcpDisplay}</td>
+      <td class="prior-score">${p.score2024}</td>
+      <td class="prior-score">${p.score2025}</td>
+      <td class="score-cell ${p.gross === null ? 'empty' : ''}">${p.gross !== null ? p.gross : '—'}</td>
+      <td class="net-cell ${net === null ? 'empty' : (isFirst ? 'leading' : '')}">${net !== null ? net : '—'}</td>
+      <td>${toPar ? `<span class="to-par ${toPar.cls}">${toPar.str}</span>` : '<span style="color:var(--cream-deeper);font-size:0.8rem;font-style:italic">—</span>'}</td>
+      <td class="putts-cell">${p.putts !== null ? p.putts : '<span style="color:var(--cream-deeper);font-size:0.8rem;font-style:italic">—</span>'}</td>
+      <td><button class="edit-btn" onclick="openModal(${scores.indexOf(p)})">Edit</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Show/hide admin column header
+  document.querySelectorAll('.admin-col').forEach(el => {
+    el.style.display = adminMode ? '' : 'none';
+  });
+}
+
+// ══════════════════════════════════════
+// RENDER TROPHY GRID
+// ══════════════════════════════════════
+function renderTrophy() {
+  const grid = document.getElementById('trophy-grid');
+  grid.innerHTML = '';
+  trophyWinners.forEach(w => {
+    const div = document.createElement('div');
+    div.className = 'trophy-card' + (w.year === 2024 ? ' recent' : '') + (w.covid ? ' covid' : '');
+    div.innerHTML = `
+      <span class="trophy-icon-sm">${w.covid ? '😷' : '🏆'}</span>
+      <div class="trophy-year">${w.year}</div>
+      <div class="trophy-name">${w.name}</div>
+      ${w.note ? `<div class="trophy-note">${w.note}</div>` : ''}
+    `;
+    grid.appendChild(div);
+  });
+}
+
+// ══════════════════════════════════════
+// TABS
+// ══════════════════════════════════════
+function showTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ══════════════════════════════════════
+// ADMIN MODE
+// ══════════════════════════════════════
+function toggleAdmin() {
+  adminMode = !adminMode;
+  document.getElementById('lb-table').classList.toggle('admin-mode', adminMode);
+  document.querySelectorAll('.edit-btn').forEach(b => b.style.display = adminMode ? 'inline-block' : 'none');
+  document.querySelector('.admin-toggle-btn:last-child').textContent = adminMode ? '✕ Close Score Entry' : '⚙ Enter Scores';
+  document.querySelectorAll('.admin-col').forEach(el => el.style.display = adminMode ? '' : 'none');
+  document.getElementById('clear-btn').style.display = adminMode ? 'inline-block' : 'none';
+}
+
+// ══════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════
+function openModal(idx) {
+  editingIdx = idx;
+  const p = scores[idx];
+  document.getElementById('modal-player-name').textContent = p.name + ' · Handicap: ' + (p.hcp >= 0 ? p.hcp : '−'+Math.abs(p.hcp));
+  document.getElementById('modal-gross').value = p.gross || '';
+  document.getElementById('modal-putts').value = p.putts || '';
+  updateModalNet();
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal-gross').focus();
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  editingIdx = null;
+}
+
+function updateModalNet() {
+  const gross = parseInt(document.getElementById('modal-gross').value);
+  const el = document.getElementById('modal-net-display');
+  if (!isNaN(gross) && editingIdx !== null) {
+    const net = gross - scores[editingIdx].hcp;
+    el.textContent = net;
+    const diff = net - PAR;
+    el.style.color = diff < 0 ? 'var(--red)' : diff === 0 ? 'var(--green-mid)' : 'var(--text)';
+  } else {
+    el.textContent = '—';
+    el.style.color = 'var(--green-deep)';
+  }
+}
+
+function saveScore() {
+  const gross = parseInt(document.getElementById('modal-gross').value);
+  const putts = parseInt(document.getElementById('modal-putts').value);
+  if (isNaN(gross) || gross < 50 || gross > 150) {
+    alert('Please enter a valid gross score (50–150).');
+    return;
+  }
+  scores[editingIdx].gross = gross;
+  scores[editingIdx].putts = isNaN(putts) ? null : putts;
+  closeModal();
+  renderLeaderboard();
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ══════════════════════════════════════
+// PERSISTENCE (localStorage)
+// ══════════════════════════════════════
+const STORAGE_KEY = 'pbi_scores_2026';
+
+function saveToStorage() {
+  const data = scores.map(p => ({ name: p.name, gross: p.gross, putts: p.putts }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadFromStorage() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!saved) return;
+    saved.forEach(s => {
+      const p = scores.find(p => p.name === s.name);
+      if (p) { p.gross = s.gross; p.putts = s.putts; }
+    });
+  } catch(e) { /* ignore */ }
+}
+
+function clearScores() {
+  if (!confirm('Clear all entered scores for 2026? This cannot be undone.')) return;
+  scores.forEach(p => { p.gross = null; p.putts = null; });
+  localStorage.removeItem(STORAGE_KEY);
+  renderLeaderboard();
+}
+
+// Patch saveScore to persist
+const _origSave = saveScore;
+function saveScore() {
+  const gross = parseInt(document.getElementById('modal-gross').value);
+  const putts = parseInt(document.getElementById('modal-putts').value);
+  if (isNaN(gross) || gross < 50 || gross > 150) {
+    alert('Please enter a valid gross score (50–150).');
+    return;
+  }
+  scores[editingIdx].gross = gross;
+  scores[editingIdx].putts = isNaN(putts) ? null : putts;
+  saveToStorage();
+  closeModal();
+  renderLeaderboard();
+}
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+loadFromStorage();
+renderLeaderboard();
+renderTrophy();
+</script>
+</body>
+</html>

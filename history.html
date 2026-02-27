@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History — Pistakee Bay Invitational</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-deep:   #16311f;
+  --green-dark:   #1e4228;
+  --green-mid:    #2a5c38;
+  --green-light:  #3d7a4e;
+  --gold:         #c4913a;
+  --gold-light:   #deb96a;
+  --gold-pale:    #f0dba0;
+  --cream:        #f8f2e6;
+  --cream-dark:   #ede3cc;
+  --cream-deeper: #e0d0b0;
+  --brown-dark:   #3a1f08;
+  --brown:        #7a5030;
+  --text:         #1e160a;
+  --text-mid:     #3a2c18;
+  --text-light:   #6b5030;
+  --white:        #fdfaf4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(22,49,31,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(196,145,58,0.25);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.nav-logo-img { width: 36px; height: 36px; }
+
+.nav-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  line-height: 1.25;
+}
+
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(240,219,160,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 60vh;
+  background: var(--green-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(42,92,56,0.6) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 20% 30%, rgba(196,145,58,0.05) 0%, transparent 50%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 70px; left: 50px; right: 50px; bottom: 30px;
+  border: 1px solid rgba(196,145,58,0.08);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; max-width: 750px; }
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.38em;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+}
+
+.hero-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: rgba(240,219,160,0.7);
+  line-height: 1.75;
+}
+
+/* ── ORIGIN STORY ── */
+.origin {
+  background: var(--white);
+  padding: 5rem 2rem;
+}
+
+.origin-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-rule {
+  width: 50px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.body-text {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--text-mid);
+}
+
+.body-text p + p { margin-top: 1.2rem; }
+
+.body-text strong {
+  color: var(--green-deep);
+  font-weight: 600;
+}
+
+.pull-quote {
+  margin: 3rem 0;
+  padding: 2rem 2.5rem;
+  border-left: 3px solid var(--gold);
+  background: var(--cream);
+  border-radius: 0 3px 3px 0;
+  position: relative;
+}
+
+.pull-quote::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: rgba(196,145,58,0.15);
+  position: absolute;
+  top: 0.2rem;
+  left: 0.8rem;
+  line-height: 1;
+}
+
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  color: var(--green-deep);
+  line-height: 1.6;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── GENERATIONS ── */
+.generations {
+  background: var(--green-deep);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.generations::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(42,92,56,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.generations-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.gen-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.gen-header .section-eyebrow { color: var(--gold); }
+.gen-header .section-title { color: var(--cream); }
+.gen-header .section-rule { background: var(--gold); margin: 0 auto 0; }
+
+.gen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.gen-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,145,58,0.2);
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.gen-card:hover { background: rgba(255,255,255,0.07); }
+
+.gen-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.gen-number {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.gen-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+.gen-era {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: rgba(196,145,58,0.55);
+  margin-bottom: 1.2rem;
+}
+
+.gen-names {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.92rem;
+  color: rgba(240,219,160,0.65);
+  line-height: 1.85;
+}
+
+.gen-names span {
+  display: block;
+}
+
+/* ── TIMELINE ── */
+.timeline-section {
+  background: var(--cream);
+  padding: 5rem 2rem;
+}
+
+.timeline-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tl-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 0;
+}
+
+/* Center line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 5%, var(--gold) 95%, transparent);
+  transform: translateX(-50%);
+}
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: start;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.tl-item:last-child { margin-bottom: 0; }
+
+/* Alternating: even items have content right, odd have content left */
+.tl-content-left {
+  text-align: right;
+  padding-right: 2rem;
+  grid-column: 1;
+}
+
+.tl-content-right {
+  text-align: left;
+  padding-left: 2rem;
+  grid-column: 3;
+}
+
+.tl-dot-col {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--gold);
+  flex-shrink: 0;
+}
+
+.tl-dot.major {
+  width: 20px;
+  height: 20px;
+  background: var(--green-deep);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(196,145,58,0.3);
+}
+
+.tl-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.tl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.tl-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.tl-names {
+  margin-top: 0.5rem;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+/* Empty side for alternating layout */
+.tl-empty { grid-column: 1; }
+.tl-empty-right { grid-column: 3; }
+
+/* ── FORMAT SECTION ── */
+.format-section {
+  background: var(--white);
+  padding: 5rem 2rem;
+}
+
+.format-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.format-card {
+  background: var(--cream);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.format-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--green-mid), var(--gold));
+}
+
+.format-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+
+.format-round {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.format-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.3rem;
+}
+
+.format-detail {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.format-note {
+  margin-top: 2.5rem;
+  background: var(--green-deep);
+  color: var(--cream);
+  border-radius: 4px;
+  padding: 1.8rem 2rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-style: italic;
+  text-align: center;
+  position: relative;
+}
+
+.format-note strong {
+  color: var(--gold-light);
+  font-style: normal;
+}
+
+/* ── ORIGINAL PLAYERS ── */
+.originals {
+  background: var(--cream-dark);
+  padding: 5rem 2rem;
+}
+
+.originals-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.player-roster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.player-chip {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.player-chip:hover {
+  border-color: var(--gold);
+  background: rgba(196,145,58,0.05);
+}
+
+.player-chip.founder {
+  background: var(--green-deep);
+  color: var(--gold-light);
+  border-color: var(--gold);
+  font-weight: 600;
+}
+
+.roster-note {
+  margin-top: 1.5rem;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text-light);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--brown-dark);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(196,145,58,0.2);
+}
+
+.footer-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(196,145,58,0.45);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 650px) {
+  .gen-grid { grid-template-columns: 1fr; }
+
+  .timeline::before { left: 20px; }
+
+  .tl-item {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto;
+  }
+
+  .tl-dot-col { grid-column: 1; grid-row: 1; }
+  .tl-content-left, .tl-content-right {
+    grid-column: 2; grid-row: 1;
+    text-align: left;
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+  .tl-empty, .tl-empty-right { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="88" fill="#1a1a1a" stroke="#c4913a" stroke-width="4"/>
+      <circle cx="100" cy="100" r="76" fill="none" stroke="#c4913a" stroke-width="1.5" opacity="0.5"/>
+      <rect x="72" y="68" width="14" height="64" rx="2" fill="#f8f2e6"/>
+      <path d="M86 68 Q128 68 128 86 Q128 104 86 104 Z" fill="#f8f2e6"/>
+      <path d="M86 78 Q116 78 116 86 Q116 94 86 94 Z" fill="#1a1a1a"/>
+      <path id="na1" d="M 28,100 A 72,72 0 0,1 172,100" fill="none"/>
+      <text font-size="13" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="700" letter-spacing="3">
+        <textPath href="#na1" startOffset="50%" text-anchor="middle">PISTAKEE</textPath>
+      </text>
+      <path id="na2" d="M 32,104 A 68,68 0 0,0 168,104" fill="none"/>
+      <text font-size="11" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="400" letter-spacing="2">
+        <textPath href="#na2" startOffset="50%" text-anchor="middle">COUNTRY CLUB</textPath>
+      </text>
+    </svg>
+    <div class="nav-logo-text">Pistakee Bay<br>Invitational</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="history.html" class="active">History</a></li>
+    <li><a href="#">Tournament</a></li>
+    <li><a href="scores.html">Scores</a></li>
+    <li><a href="#">Gallery</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Est. 1950s — McHenry, Illinois</div>
+    <h1 class="hero-title">Seven Decades of<br><em>Tradition</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">The story of a family golf tournament that has outlasted<br>fads, fashions, and the occasional sandtrap dispute.</p>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="origin">
+  <div class="origin-inner">
+    <div class="section-eyebrow">The Beginning</div>
+    <h2 class="section-title">How It All Started</h2>
+    <div class="section-rule"></div>
+    <div class="body-text">
+      <p>
+        Sometime in the 1950s, on the shores of <strong>Pistakee Bay</strong> in McHenry, Illinois, a group of men decided to make a golf outing into something more. What began as an informal gathering became, over time, one of the most enduring traditions in the family — an annual tournament played every summer, without fail, for over seventy years.
+      </p>
+      <p>
+        The early years belong to the founding generation: <strong>Bill Crawford, Tom Goldrick, Joe Goldrick, Tim McCabe, Gary Micetich, Bill McCabe, John Goldrick, Mike Goldrick</strong>, and others who first teed it up together at <strong>Pistakee Bay Country Club</strong> on West Bay Road. The club sat at the edge of the bay, a classic nine-hole layout that would host the tournament for decades.
+      </p>
+      <p>
+        The format was simple then and remains largely the same today: four nine-hole scrambles spread across Friday, and one eighteen-hole stroke play round to crown the champion. The stroke play scores became the basis for handicaps the following year — your past performance set your starting point, a built-in mechanism that kept the competition honest and gave everyone a fighting chance.
+      </p>
+
+      <div class="pull-quote">
+        <p>Every year we come back — older, a little slower off the tee, and absolutely certain that this is the year we finally win the thing.</p>
+        <cite>— A Tournament Competitor, sentiments shared widely</cite>
+      </div>
+
+      <p>
+        Pistakee Bay Country Club has since closed — the property sold, the course gone. But the tournament carries its name and its spirit forward. The men who started it taught their sons to play. Those sons brought their own sons. Today, <strong>three generations of Goldricks, McCabes, Pierces, and their friends</strong> gather each June to continue what the founding generation started.
+      </p>
+      <p>
+        The scorecard has changed. The players have changed. The stories told at the 19th hole have gotten longer and more embellished with each passing year. But the tournament endures.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GENERATIONS -->
+<section class="generations">
+  <div class="generations-inner">
+    <div class="gen-header">
+      <div class="section-eyebrow">The Families</div>
+      <h2 class="section-title">Three Generations</h2>
+      <div class="section-rule" style="margin:1rem auto 0;"></div>
+    </div>
+    <div class="gen-grid">
+
+      <div class="gen-card">
+        <div class="gen-number">First Generation</div>
+        <div class="gen-title">The Founders</div>
+        <div class="gen-era">1950s – 1980s</div>
+        <div class="gen-names">
+          <span>Tom Goldrick Sr.</span>
+          <span>Joe Goldrick Sr.</span>
+          <span>John Goldrick</span>
+          <span>Mike Goldrick Sr.</span>
+          <span>Bill McCabe</span>
+          <span>Tim McCabe</span>
+          <span>Bill Crawford</span>
+          <span>Gary Micetich</span>
+          <span>Kyle Nieman</span>
+          <span>Mike Dore</span>
+          <span>Fred Gamber</span>
+          <span>George Wray</span>
+          <span>Jack Desmond</span>
+        </div>
+      </div>
+
+      <div class="gen-card">
+        <div class="gen-number">Second Generation</div>
+        <div class="gen-title">Sons of the Founders</div>
+        <div class="gen-era">1990s – 2010s</div>
+        <div class="gen-names">
+          <span>Dan Goldrick</span>
+          <span>Jay Goldrick</span>
+          <span>Tom Goldrick Jr.</span>
+          <span>Joe Goldrick Jr.</span>
+          <span>Tim Goldrick</span>
+          <span>Martin Goldrick</span>
+          <span>George McCabe</span>
+          <span>Will McCabe</span>
+          <span>Patrick McCabe</span>
+          <span>TJ McCabe</span>
+          <span>Bill Pierce</span>
+          <span>Jack Pierce</span>
+          <span>Ryan Pierce</span>
+        </div>
+      </div>
+
+      <div class="gen-card">
+        <div class="gen-number">Third Generation</div>
+        <div class="gen-title">The Next Wave</div>
+        <div class="gen-era">2010s – Present</div>
+        <div class="gen-names">
+          <span>Jack Goldrick Jr.</span>
+          <span>Tommie Goldrick Jr.</span>
+          <span>And more to come...</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="tl-header">
+      <div class="section-eyebrow">The Record Books</div>
+      <h2 class="section-title">A Tournament Timeline</h2>
+      <div class="section-rule" style="margin:0.8rem auto 0;"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-content-left">
+          <div class="tl-year">1950s</div>
+          <div class="tl-title">The Tournament is Founded</div>
+          <div class="tl-body">A group of friends and family begin gathering annually on Pistakee Bay for a golf outing. The tradition takes root.</div>
+        </div>
+        <div class="tl-dot-col"><div class="tl-dot major"></div></div>
+        <div class="tl-empty-right"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-content-right">
+          <div class="tl-year">1996</div>
+          <div class="tl-title">Earliest Recorded Results</div>
+          <div class="tl-body">The first scorecards on file. Bill Crawford shoots 77/82, Bill McCabe 74/79. Par 72 at Pistakee Bay CC.</div>
+          <div class="tl-names">Crawford · T. Goldrick · J. Goldrick · T. McCabe · Micetich · Nieman · M. Goldrick · B. McCabe · John Goldrick</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-content-left">
+          <div class="tl-year">1998 – 1999</div>
+          <div class="tl-title">Fred Gamber Joins the Field</div>
+          <div class="tl-body">Fred Gamber appears in the records for the first time. The field expands. Jack Desmond and George Wray are regulars.</div>
+        </div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-empty-right"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-content-right">
+          <div class="tl-year">2001 – 2008</div>
+          <div class="tl-title">The Next Generation Arrives</div>
+          <div class="tl-body">The sons begin to appear in the pairings. Dan Goldrick, Jay Goldrick, Tom Jr., Joe Jr., and the Pierce family join the field.</div>
+          <div class="tl-names">Dan · Jay · Tommy Jr. · Joey Jr. · Jack Pierce · Ryan Pierce · Bill Pierce</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-content-left">
+          <div class="tl-year">2011</div>
+          <div class="tl-title">Uncle John Wins</div>
+          <div class="tl-body">John Goldrick claims the trophy — the first result in the official winners' record. The Roll of Champions begins.</div>
+        </div>
+        <div class="tl-dot-col"><div class="tl-dot major"></div></div>
+        <div class="tl-empty-right"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-content-right">
+          <div class="tl-year">2011 – 2019</div>
+          <div class="tl-title">A Golden Era of Competition</div>
+          <div class="tl-body">Nine consecutive tournaments. Nine different champions. Tom Jr., Bill McCabe, Jack Jr., Joe Jr., Gary, Jack Pierce, Tim Goldrick, and Martin Goldrick all take the title.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-content-left">
+          <div class="tl-year">2020</div>
+          <div class="tl-title">The One That Got Away</div>
+          <div class="tl-body">For the first time in the tournament's history, the event is cancelled. COVID-19 brings a seven-decade streak to a pause. No champion is crowned.</div>
+        </div>
+        <div class="tl-dot-col"><div class="tl-dot" style="background:#8b2020;box-shadow:0 0 0 2px rgba(139,32,32,0.4);"></div></div>
+        <div class="tl-empty-right"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-content-right">
+          <div class="tl-year">2021</div>
+          <div class="tl-title">The Return</div>
+          <div class="tl-body">The tournament resumes. Bill Crawford — a name from the very first scorecards — wins the trophy. A fitting champion for a comeback year.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-content-left">
+          <div class="tl-year">2022 – 2024</div>
+          <div class="tl-title">New Champions, Old Traditions</div>
+          <div class="tl-body">Patrick McCabe wins in 2022. Mike Goldrick in 2023. Dan Goldrick and TJ McCabe share the honors in 2024.</div>
+        </div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-empty-right"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot-col"><div class="tl-dot major"></div></div>
+        <div class="tl-content-right">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">The Story Continues</div>
+          <div class="tl-body">Twenty-three players. Three generations. One trophy. The Pistakee Bay Invitational plays on.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format-section">
+  <div class="format-inner">
+    <div class="section-eyebrow">How We Play</div>
+    <h2 class="section-title">The Tournament Format</h2>
+    <div class="section-rule"></div>
+    <div class="body-text" style="max-width:650px;">
+      <p>Every year the format is the same: 54 holes played over a single day. Four nine-hole scrambles in the morning and afternoon, followed by the round that matters — eighteen holes of stroke play.</p>
+    </div>
+
+    <div class="format-grid">
+      <div class="format-card">
+        <span class="format-icon">🏌️</span>
+        <div class="format-round">Round 1</div>
+        <div class="format-name">AM Scramble</div>
+        <div class="format-detail">9 holes · Team format</div>
+      </div>
+      <div class="format-card">
+        <span class="format-icon">🏌️</span>
+        <div class="format-round">Round 2</div>
+        <div class="format-name">AM Scramble</div>
+        <div class="format-detail">9 holes · Team format</div>
+      </div>
+      <div class="format-card">
+        <span class="format-icon">🏌️</span>
+        <div class="format-round">Round 3</div>
+        <div class="format-name">PM Scramble</div>
+        <div class="format-detail">9 holes · Team format</div>
+      </div>
+      <div class="format-card">
+        <span class="format-icon">🏌️</span>
+        <div class="format-round">Round 4</div>
+        <div class="format-name">PM Scramble</div>
+        <div class="format-detail">9 holes · Team format</div>
+      </div>
+      <div class="format-card" style="border-color:var(--gold);background:var(--cream);">
+        <span class="format-icon">🏆</span>
+        <div class="format-round" style="color:var(--green-deep);font-weight:700;">Championship Round</div>
+        <div class="format-name">Stroke Play</div>
+        <div class="format-detail">18 holes · Individual · Decides the champion</div>
+      </div>
+    </div>
+
+    <div class="format-note">
+      The <strong>handicap system</strong> is simple and earned: your handicap for the current year is calculated from the average of your two prior years' gross scores, minus par. Play better, carry less strokes. Play worse, get more help. Every score you post becomes part of your permanent record.
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINAL PLAYERS -->
+<section class="originals">
+  <div class="originals-inner">
+    <div class="section-eyebrow">The Full Field</div>
+    <h2 class="section-title">Known Players Through the Years</h2>
+    <div class="section-rule"></div>
+    <p class="body-text" style="max-width:650px; margin-bottom:0;">Every name that has appeared in the tournament records, from the first scorecards in 1996 through today. The founding generation in <span style="color:var(--gold);font-weight:600;">gold</span>.</p>
+    <div class="player-roster">
+      <div class="player-chip founder">Bill Crawford</div>
+      <div class="player-chip founder">Tom Goldrick Sr.</div>
+      <div class="player-chip founder">Joe Goldrick Sr.</div>
+      <div class="player-chip founder">John Goldrick</div>
+      <div class="player-chip founder">Mike Goldrick Sr.</div>
+      <div class="player-chip founder">Tim McCabe</div>
+      <div class="player-chip founder">Bill McCabe</div>
+      <div class="player-chip founder">Gary Micetich</div>
+      <div class="player-chip founder">Kyle Nieman</div>
+      <div class="player-chip founder">Mike Dore</div>
+      <div class="player-chip founder">Fred Gamber</div>
+      <div class="player-chip founder">George Wray</div>
+      <div class="player-chip founder">Jack Desmond</div>
+      <div class="player-chip">Dan Goldrick</div>
+      <div class="player-chip">Jay Goldrick</div>
+      <div class="player-chip">Tom Goldrick Jr.</div>
+      <div class="player-chip">Joe Goldrick Jr.</div>
+      <div class="player-chip">Tim Goldrick</div>
+      <div class="player-chip">Martin Goldrick</div>
+      <div class="player-chip">Jack Goldrick Jr.</div>
+      <div class="player-chip">Tommie Goldrick Jr.</div>
+      <div class="player-chip">George McCabe</div>
+      <div class="player-chip">Will McCabe</div>
+      <div class="player-chip">Patrick McCabe</div>
+      <div class="player-chip">TJ McCabe</div>
+      <div class="player-chip">George McCabe Sr.</div>
+      <div class="player-chip">Bill Pierce</div>
+      <div class="player-chip">Jack Pierce</div>
+      <div class="player-chip">Ryan Pierce</div>
+    </div>
+    <p class="roster-note">Records are incomplete for years prior to 1996. If you have scorecards, photos, or memories from the early decades, please share them with a tournament organizer so we can add them to the archive.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">Pistakee Bay Invitational &mdash; Est. 1950s &mdash; McHenry, Illinois &mdash; A family tradition</p>
+</footer>
+
+</body>
+</html>
