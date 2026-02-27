@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pistakee Bay Invitational</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   RESET & ROOT
+══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-deep:   #16311f;
+  --green-dark:   #1e4228;
+  --green-mid:    #2a5c38;
+  --green-light:  #3d7a4e;
+  --gold:         #c4913a;
+  --gold-light:   #deb96a;
+  --gold-pale:    #f0dba0;
+  --cream:        #f8f2e6;
+  --cream-dark:   #ede3cc;
+  --cream-deeper: #e0d0b0;
+  --brown-dark:   #3a1f08;
+  --brown:        #7a5030;
+  --text:         #1e160a;
+  --text-mid:     #3a2c18;
+  --text-light:   #6b5030;
+  --white:        #fdfaf4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--green-deep);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   PASSWORD GATE
+══════════════════════════════════════════ */
+#gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--green-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,145,58,0.07) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(196,145,58,0.03) 60px, rgba(196,145,58,0.03) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(196,145,58,0.03) 60px, rgba(196,145,58,0.03) 61px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#gate.fade-out {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.gate-inner {
+  text-align: center;
+  padding: 3rem 2.5rem;
+  max-width: 420px;
+  width: 90%;
+}
+
+.gate-crest {
+  margin: 0 auto 1.8rem;
+  width: 110px;
+  height: 110px;
+}
+
+.gate-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+.gate-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(240,219,160,0.6);
+  letter-spacing: 0.08em;
+  margin-bottom: 2.2rem;
+}
+
+.gate-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 2rem;
+}
+
+.gate-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(196,145,58,0.7);
+  margin-bottom: 0.8rem;
+}
+
+.gate-input-wrap {
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+#gate-password {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(196,145,58,0.35);
+  border-radius: 3px;
+  color: var(--cream);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  padding: 0.85rem 3rem 0.85rem 1.2rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+#gate-password:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.08);
+}
+
+#gate-password::placeholder {
+  color: rgba(196,145,58,0.35);
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+}
+
+#gate-password.shake {
+  animation: shake 0.4s ease;
+  border-color: #c0392b;
+}
+
+@keyframes shake {
+  0%,100%{ transform: translateX(0); }
+  20%{ transform: translateX(-8px); }
+  40%{ transform: translateX(8px); }
+  60%{ transform: translateX(-6px); }
+  80%{ transform: translateX(6px); }
+}
+
+.gate-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold) 0%, #a07030 100%);
+  border: none;
+  border-radius: 3px;
+  color: var(--green-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  text-transform: uppercase;
+}
+
+.gate-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.gate-btn:active { transform: translateY(0); }
+
+.gate-error {
+  font-size: 0.82rem;
+  color: #e07070;
+  font-style: italic;
+  margin-top: 0.8rem;
+  min-height: 1.2rem;
+  font-family: 'EB Garamond', serif;
+}
+
+.gate-hint {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: rgba(196,145,58,0.4);
+  font-style: italic;
+  font-family: 'EB Garamond', serif;
+}
+
+/* ══════════════════════════════════════════
+   MAIN SITE (hidden until unlocked)
+══════════════════════════════════════════ */
+#site {
+  opacity: 0;
+  transition: opacity 1s ease 0.2s;
+  pointer-events: none;
+}
+#site.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ══════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(22,49,31,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(196,145,58,0.25);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-logo-img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  line-height: 1.25;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,219,160,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold);
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(42,92,56,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 30% 20%, rgba(196,145,58,0.06) 0%, transparent 50%),
+    var(--green-deep);
+}
+
+/* Texture overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Decorative corner elements */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 80px; left: 40px; right: 40px; bottom: 40px;
+  border: 1px solid rgba(196,145,58,0.1);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 700px;
+  animation: fadeUp 1.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-crest {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 2rem;
+  animation: fadeUp 1.2s ease 0.1s both;
+  filter: drop-shadow(0 8px 30px rgba(196,145,58,0.3));
+}
+
+.hero-est {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+  animation: fadeUp 1.2s ease 0.2s both;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 1.2s ease 0.3s both;
+}
+
+.hero-title span {
+  color: var(--gold-light);
+}
+
+.hero-rule {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+  animation: fadeUp 1.2s ease 0.4s both;
+}
+
+.hero-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(240,219,160,0.75);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  animation: fadeUp 1.2s ease 0.5s both;
+}
+
+/* ══════════════════════════════════════════
+   COUNTDOWN
+══════════════════════════════════════════ */
+.countdown-section {
+  position: relative;
+  animation: fadeUp 1.2s ease 0.6s both;
+  margin-top: 3rem;
+}
+
+.countdown-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: rgba(196,145,58,0.65);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.countdown {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.countdown-unit {
+  text-align: center;
+}
+
+.countdown-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  display: block;
+  min-width: 2.5ch;
+  text-shadow: 0 2px 20px rgba(196,145,58,0.3);
+}
+
+.countdown-unit-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: rgba(196,145,58,0.5);
+  margin-top: 0.4rem;
+  display: block;
+}
+
+.countdown-sep {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: rgba(196,145,58,0.25);
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+/* ══════════════════════════════════════════
+   SCROLL INDICATOR
+══════════════════════════════════════════ */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  animation: fadeUp 1.2s ease 1s both;
+  cursor: pointer;
+}
+
+.scroll-indicator span {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: rgba(196,145,58,0.4);
+}
+
+.scroll-mouse {
+  width: 20px;
+  height: 32px;
+  border: 1px solid rgba(196,145,58,0.3);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.scroll-dot {
+  width: 3px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: scrollBob 1.8s ease infinite;
+}
+
+@keyframes scrollBob {
+  0%,100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.3; }
+}
+
+/* ══════════════════════════════════════════
+   QUICK LINKS SECTION
+══════════════════════════════════════════ */
+.quick-links {
+  background: var(--cream);
+  padding: 5rem 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.2;
+}
+
+.section-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1rem auto 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--green-mid), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(26,58,42,0.12);
+  border-color: rgba(196,145,58,0.4);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════════
+   TRADITION SECTION
+══════════════════════════════════════════ */
+.tradition {
+  background: var(--green-deep);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tradition::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 100% 50%, rgba(196,145,58,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 0% 50%, rgba(42,92,56,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.tradition-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.tradition .section-eyebrow { color: var(--gold); }
+.tradition .section-title { color: var(--cream); }
+.tradition .section-rule { background: var(--gold); }
+
+.tradition-text {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: rgba(240,219,160,0.75);
+  line-height: 1.85;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+.tradition-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(196,145,58,0.55);
+  margin-top: 0.4rem;
+  display: block;
+}
+
+.tradition-quote {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 1px solid rgba(196,145,58,0.2);
+  border-radius: 3px;
+  position: relative;
+}
+
+.tradition-quote::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  color: rgba(196,145,58,0.15);
+  position: absolute;
+  top: -1rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+.tradition-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--cream);
+  line-height: 1.6;
+}
+
+.tradition-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ══════════════════════════════════════════
+   RECENT CHAMPION
+══════════════════════════════════════════ */
+.champion {
+  background: var(--cream-dark);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.champion-card {
+  max-width: 480px;
+  margin: 2.5rem auto 0;
+  background: var(--white);
+  border: 1px solid var(--cream-deeper);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 40px rgba(26,58,42,0.08);
+  position: relative;
+}
+
+.champion-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--green-mid), var(--gold), var(--green-mid));
+}
+
+.trophy-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.champion-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.champion-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.2;
+}
+
+.champion-detail {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 0.4rem;
+}
+
+.champion-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.2rem auto;
+}
+
+.view-results-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--green-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.view-results-btn:hover { color: var(--gold); }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer {
+  background: var(--brown-dark);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(196,145,58,0.2);
+}
+
+.footer-text {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(196,145,58,0.45);
+  line-height: 1.7;
+}
+
+.footer-lock {
+  margin-top: 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: rgba(196,145,58,0.25);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  nav { padding: 0 1rem; }
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: 0.58rem; }
+  .countdown { gap: 1.2rem; }
+  .tradition-stats { gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PASSWORD GATE
+════════════════════════════════════════ -->
+<div id="gate">
+  <div class="gate-inner">
+    <!-- Pistakee Country Club Logo Recreation -->
+    <svg class="gate-crest" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer filled circle -->
+      <circle cx="100" cy="82" r="58" fill="#1a1a1a" stroke="#c4913a" stroke-width="3"/>
+      <!-- Inner ring -->
+      <circle cx="100" cy="82" r="50" fill="none" stroke="#c4913a" stroke-width="1.2" opacity="0.5"/>
+      <!-- Stylized P - stem -->
+      <rect x="82" y="56" width="10" height="50" rx="1.5" fill="#f8f2e6"/>
+      <!-- Stylized P - bowl outer -->
+      <path d="M92 56 Q126 56 126 71 Q126 86 92 86 Z" fill="#f8f2e6"/>
+      <!-- Stylized P - bowl cutout -->
+      <path d="M92 63 Q118 63 118 71 Q118 79 92 79 Z" fill="#1a1a1a"/>
+      <!-- PISTAKEE arc top -->
+      <path id="ga1" d="M 50,82 A 50,50 0 0,1 150,82" fill="none"/>
+      <text font-size="9.5" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="700" letter-spacing="3.5">
+        <textPath href="#ga1" startOffset="50%" text-anchor="middle">PISTAKEE</textPath>
+      </text>
+      <!-- COUNTRY CLUB arc bottom -->
+      <path id="ga2" d="M 53,86 A 47,47 0 0,0 147,86" fill="none"/>
+      <text font-size="8" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="400" letter-spacing="2">
+        <textPath href="#ga2" startOffset="50%" text-anchor="middle">COUNTRY CLUB</textPath>
+      </text>
+      <!-- Decorative rule -->
+      <line x1="55" y1="158" x2="145" y2="158" stroke="rgba(196,145,58,0.4)" stroke-width="0.8"/>
+      <!-- INVITATIONAL subtitle -->
+      <text x="100" y="172" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="8" font-weight="600" fill="#c4913a" letter-spacing="3">INVITATIONAL</text>
+      <text x="100" y="185" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="6.5" font-weight="400" fill="rgba(196,145,58,0.55)" letter-spacing="2">EST. 1950s</text>
+    </svg>
+
+    <div class="gate-title">Pistakee Bay<br>Invitational</div>
+    <div class="gate-subtitle">Members Only</div>
+    <div class="gate-divider"></div>
+    <div class="gate-label">Enter Password</div>
+    <div class="gate-input-wrap">
+      <input type="password" id="gate-password" placeholder="· · · · · · · ·" autocomplete="off" />
+    </div>
+    <button class="gate-btn" onclick="checkPassword()">Enter the Clubhouse</button>
+    <div class="gate-error" id="gate-error">&nbsp;</div>
+    <div class="gate-hint">For access, contact a tournament organizer.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MAIN SITE
+════════════════════════════════════════ -->
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <svg class="nav-logo-img" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#1a1a1a" stroke="#c4913a" stroke-width="4"/>
+        <circle cx="100" cy="100" r="76" fill="none" stroke="#c4913a" stroke-width="1.5" opacity="0.5"/>
+        <!-- P stem -->
+        <rect x="72" y="68" width="14" height="64" rx="2" fill="#f8f2e6"/>
+        <!-- P bowl -->
+        <path d="M86 68 Q128 68 128 86 Q128 104 86 104 Z" fill="#f8f2e6"/>
+        <path d="M86 78 Q116 78 116 86 Q116 94 86 94 Z" fill="#1a1a1a"/>
+        <!-- PISTAKEE top arc -->
+        <path id="na1" d="M 28,100 A 72,72 0 0,1 172,100" fill="none"/>
+        <text font-size="13" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="700" letter-spacing="3">
+          <textPath href="#na1" startOffset="50%" text-anchor="middle">PISTAKEE</textPath>
+        </text>
+        <!-- COUNTRY CLUB bottom arc -->
+        <path id="na2" d="M 32,104 A 68,68 0 0,0 168,104" fill="none"/>
+        <text font-size="11" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="400" letter-spacing="2">
+          <textPath href="#na2" startOffset="50%" text-anchor="middle">COUNTRY CLUB</textPath>
+        </text>
+      </svg>
+      <div class="nav-logo-text">Pistakee Bay<br>Invitational</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Tournament</a></li>
+      <li><a href="#">Scores</a></li>
+      <li><a href="#">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <svg class="hero-crest" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer circle -->
+        <circle cx="100" cy="90" r="82" fill="#1a1a1a" stroke="#c4913a" stroke-width="3.5"/>
+        <!-- Inner ring -->
+        <circle cx="100" cy="90" r="72" fill="none" stroke="#c4913a" stroke-width="1.5" opacity="0.5"/>
+        <!-- P stem -->
+        <rect x="72" y="58" width="14" height="62" rx="2" fill="#f8f2e6"/>
+        <!-- P bowl outer -->
+        <path d="M86 58 Q128 58 128 78 Q128 98 86 98 Z" fill="#f8f2e6"/>
+        <!-- P bowl cutout -->
+        <path d="M86 68 Q116 68 116 78 Q116 88 86 88 Z" fill="#1a1a1a"/>
+        <!-- PISTAKEE top arc -->
+        <path id="ha1" d="M 22,90 A 78,78 0 0,1 178,90" fill="none"/>
+        <text font-size="14" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="700" letter-spacing="5">
+          <textPath href="#ha1" startOffset="50%" text-anchor="middle">PISTAKEE</textPath>
+        </text>
+        <!-- COUNTRY CLUB bottom arc -->
+        <path id="ha2" d="M 28,95 A 72,72 0 0,0 172,95" fill="none"/>
+        <text font-size="12" fill="#c4913a" font-family="Cinzel,Georgia,serif" font-weight="400" letter-spacing="3">
+          <textPath href="#ha2" startOffset="50%" text-anchor="middle">COUNTRY CLUB</textPath>
+        </text>
+        <!-- Est line -->
+        <text x="100" y="196" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="9" fill="rgba(196,145,58,0.6)" letter-spacing="3">EST. 1950s</text>
+      </svg>
+
+      <div class="hero-est">Est. 1950s — McHenry, Illinois</div>
+      <h1 class="hero-title">Pistakee Bay<br><span>Invitational</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">A family golf tradition spanning generations,<br>played on the shores of Pistakee Bay.</p>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-section">
+        <div class="countdown-label">Days Until the Next Tournament</div>
+        <div class="countdown">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">—</span>
+            <span class="countdown-unit-label">Days</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">—</span>
+            <span class="countdown-unit-label">Hours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-mins">—</span>
+            <span class="countdown-unit-label">Minutes</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-secs">—</span>
+            <span class="countdown-unit-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="document.querySelector('.quick-links').scrollIntoView({behavior:'smooth'})">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span>Explore</span>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="quick-links">
+    <div class="section-header">
+      <div class="section-eyebrow">The Club</div>
+      <h2 class="section-title">Welcome to the Clubhouse</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <div class="card-title">History</div>
+        <p class="card-desc">From your grandfather's era to today — the story of a tradition that has endured for over seven decades.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⛳</span>
+        <div class="card-title">Tournament</div>
+        <p class="card-desc">This year's date, course, format, tee times, and everything you need to know before you tee off.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏆</span>
+        <div class="card-title">Scores & Results</div>
+        <p class="card-desc">The leaderboard, past champions, all-time records, and individual career statistics.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📷</span>
+        <div class="card-title">Gallery</div>
+        <p class="card-desc">Decades of memories — from vintage black-and-whites to this year's round. All the moments that matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRADITION -->
+  <section class="tradition">
+    <div class="tradition-inner">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="section-title">A Tradition Worth Keeping</h2>
+      <div class="section-rule"></div>
+      <p class="tradition-text">
+        What began in the 1950s as a gathering of men on the shores of Pistakee Bay has grown into one of our family's most cherished institutions. Grandfathers taught fathers. Fathers taught sons. And every year, without fail, we return to the course — to compete, to tell the same stories, and to remind ourselves who we come from.
+      </p>
+      <div class="tradition-stats">
+        <div class="stat">
+          <span class="stat-number">70+</span>
+          <span class="stat-label">Years Running</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Generations</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">20</span>
+          <span class="stat-label">Players Per Year</span>
+        </div>
+      </div>
+      <div class="tradition-quote">
+        <p>Every year we come back — older, slower, and absolutely certain we're going to win this time.</p>
+        <cite>— A Tournament Competitor</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT CHAMPION -->
+  <section class="champion">
+    <div class="section-header">
+      <div class="section-eyebrow">Defending Champion</div>
+      <h2 class="section-title">Roll of Honor</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="champion-card">
+      <span class="trophy-icon">🏆</span>
+      <div class="champion-year">2024 Champion</div>
+      <div class="champion-name">[ To Be Added ]</div>
+      <div class="champion-detail">Score · Course · Notable Achievement</div>
+      <div class="champion-rule"></div>
+      <a href="#" class="view-results-btn">View Full Results Archive →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">Pistakee Bay Invitational &mdash; Est. 1950s &mdash; McHenry, Illinois<br>A private family tradition. All rights reserved.</p>
+    <p class="footer-lock">🔒 Password Protected &nbsp;·&nbsp; Members Only</p>
+  </footer>
+
+</div><!-- /site -->
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+// ── PASSWORD ──
+// Change this to your desired password
+const SITE_PASSWORD = 'pistakee2025';
+
+function checkPassword() {
+  const input = document.getElementById('gate-password').value;
+  const error = document.getElementById('gate-error');
+  if (input.toLowerCase() === SITE_PASSWORD) {
+    document.getElementById('gate').classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('gate').style.display = 'none';
+      const site = document.getElementById('site');
+      site.classList.add('visible');
+    }, 800);
+  } else {
+    const pw = document.getElementById('gate-password');
+    pw.classList.remove('shake');
+    void pw.offsetWidth;
+    pw.classList.add('shake');
+    error.textContent = 'Incorrect password. Please try again.';
+    pw.value = '';
+    setTimeout(() => pw.classList.remove('shake'), 400);
+  }
+}
+
+// Allow Enter key
+document.getElementById('gate-password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkPassword();
+  if (e.key !== 'Enter') document.getElementById('gate-error').textContent = '\u00A0';
+});
+
+// ── COUNTDOWN ──
+// Set your tournament date here: YYYY, MM (0-indexed), DD
+const TOURNAMENT_DATE = new Date(2025, 7, 1); // Aug 1, 2025 placeholder — update this!
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = TOURNAMENT_DATE - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '0';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+
+  const days  = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const secs  = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById('cd-days').textContent  = days;
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
