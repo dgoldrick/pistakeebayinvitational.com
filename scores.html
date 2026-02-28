@@ -1306,7 +1306,7 @@ function saveScore() {
 // ══════════════════════════════════════
 // HISTORICAL DATA
 // ══════════════════════════════════════
-const YEARS = [1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2023,2024,2025];
+const YEARS = [1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2023,2024,2025];
 
 const TROPHY_WINNERS = {
   2025: ['Danny Goldrick'],
@@ -1326,30 +1326,33 @@ const TROPHY_WINNERS = {
 };
 
 const HIST_SCORES = {
-  1997: {'Bill Crawford':87,'Tom Goldrick':91,'Joe Goldrick Sr.':93,'Tim McCabe':79,'Gary Micetich':84,'Kyle Nieman':82,'Mike Goldrick':104,'Bill McCabe':88,'John Goldrick':84,'Fred Gamber':null},
+  1994: {'Bill Crawford':77,'Mike Dore':90,'Tom Goldrick':84,'Joe Goldrick Sr.':96,'Tim McCabe':85,'Gary Micetich':87,'Kyle Nieman':90,'Mike Goldrick':105,'Bill McCabe':74,'John Goldrick':90},
+  1995: {'Bill Crawford':82,'Mike Dore':94,'Tom Goldrick':85,'Joe Goldrick Sr.':90,'Tim McCabe':79,'Gary Micetich':79,'Kyle Nieman':86,'Mike Goldrick':107,'Bill McCabe':79,'John Goldrick':96},
+  1997: {'Bill Crawford':87,'Tom Goldrick':91,'Joe Goldrick Sr.':93,'Tim McCabe':79,'Gary Micetich':84,'Kyle Nieman':82,'Mike Goldrick':104,'Bill McCabe':88,'John Goldrick':84},
   1998: {'Bill Crawford':83,'Tom Goldrick':90,'Joe Goldrick Sr.':105,'Tim McCabe':80,'Gary Micetich':85,'Kyle Nieman':88,'Mike Goldrick':99,'Bill McCabe':83,'John Goldrick':95},
   1999: {'Bill Crawford':84,'Tom Goldrick':82,'Joe Goldrick Sr.':93,'Tim McCabe':85,'Gary Micetich':80,'Kyle Nieman':85,'Mike Goldrick':104,'Bill McCabe':75,'John Goldrick':97},
-  2000: {'Bill Crawford':80,'Tom Goldrick':82,'Joe Goldrick Sr.':97,'Tim McCabe':78,'Gary Micetich':84,'Kyle Nieman':95,'Mike Goldrick':99,'Bill McCabe':86,'John Goldrick':93,'Fred Gamber':86},
+  2000: {'Bill Crawford':80,'Tom Goldrick':85,'Joe Goldrick Sr.':97,'Tim McCabe':78,'Gary Micetich':84,'Kyle Nieman':95,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':109,'Fred Gamber':89},
   2001: {'Bill Crawford':77,'Tom Goldrick':87,'Joe Goldrick Sr.':101,'Tim McCabe':88,'Gary Micetich':92,'Kyle Nieman':84,'Mike Goldrick':104,'Bill McCabe':75,'John Goldrick':94},
-  2002: {'Bill Crawford':75,'Tom Goldrick':85,'Joe Goldrick Sr.':97,'Tim McCabe':82,'Gary Micetich':84,'Kyle Nieman':99,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':109,'Fred Gamber':89},
-  2003: {'Bill Crawford':83,'Tom Goldrick':77,'Joe Goldrick Sr.':105,'Tim McCabe':88,'Gary Micetich':89,'Kyle Nieman':99,'Mike Goldrick':103,'Bill McCabe':82,'John Goldrick':97,'Fred Gamber':83,'Mike Dore':90},
-  2004: {'Bill Crawford':75,'Tom Goldrick':87,'Joe Goldrick Sr.':104,'Tim McCabe':82,'Gary Micetich':84,'Kyle Nieman':88,'Mike Goldrick':103,'Bill McCabe':87,'John Goldrick':106,'Fred Gamber':78,'Mike Dore':null},
-  2005: {'Bill Crawford':82,'Tom Goldrick':84,'Joe Goldrick Sr.':105,'Tim McCabe':84,'Gary Micetich':87,'Kyle Nieman':94,'Mike Goldrick':99,'Bill McCabe':77,'John Goldrick':94,'Fred Gamber':87},
-  2006: {'Bill Crawford':78,'Tom Goldrick':84,'Joe Goldrick Sr.':108,'Tim McCabe':81,'Gary Micetich':83,'Kyle Nieman':91,'Mike Goldrick':101,'Bill McCabe':82,'John Goldrick':99,'Fred Gamber':84,'Danny Goldrick':85,'Tom Goldrick Jr.':93,'Joe Goldrick Jr.':95,'Jay Goldrick':97},
-  2007: {'Bill Crawford':76,'Tom Goldrick':92,'Joe Goldrick Sr.':107,'Tim McCabe':83,'Gary Micetich':83,'Kyle Nieman':93,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':93,'Fred Gamber':83,'Danny Goldrick':82,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':91,'Jay Goldrick':113},
+  2002: {'Bill Crawford':75,'Tom Goldrick':77,'Joe Goldrick Sr.':105,'Tim McCabe':82,'Gary Micetich':89,'Kyle Nieman':99,'Mike Goldrick':103,'Bill McCabe':82,'John Goldrick':97,'Fred Gamber':83,'Mike Dore':90},
+  2003: {'Bill Crawford':83,'Tom Goldrick':87,'Joe Goldrick Sr.':104,'Tim McCabe':88,'Gary Micetich':84,'Kyle Nieman':88,'Mike Goldrick':103,'Bill McCabe':87,'John Goldrick':106,'Fred Gamber':78},
+  2004: {'Bill Crawford':82,'Tom Goldrick':84,'Joe Goldrick Sr.':105,'Tim McCabe':84,'Gary Micetich':87,'Kyle Nieman':94,'Mike Goldrick':99,'Bill McCabe':77,'John Goldrick':94,'Fred Gamber':87},
+  2005: {'Bill Crawford':78,'Tom Goldrick':84,'Joe Goldrick Sr.':108,'Tim McCabe':81,'Gary Micetich':83,'Kyle Nieman':91,'Mike Goldrick':101,'Bill McCabe':82,'John Goldrick':99,'Fred Gamber':84,'Danny Goldrick':85,'Tom Goldrick Jr.':93,'Joe Goldrick Jr.':95,'Jay Goldrick':97},
+  2006: {'Bill Crawford':76,'Tom Goldrick':92,'Joe Goldrick Sr.':107,'Tim McCabe':83,'Gary Micetich':83,'Kyle Nieman':93,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':93,'Fred Gamber':83,'Danny Goldrick':82,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':91,'Jay Goldrick':113},
+  2007: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick Sr.':100,'Tim McCabe':81,'Gary Micetich':80,'Kyle Nieman':96,'Mike Goldrick':105,'Bill McCabe':83,'John Goldrick':96,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':85,'Jay Goldrick':95},
   2008: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick Sr.':100,'Tim McCabe':81,'Gary Micetich':80,'Kyle Nieman':96,'Mike Goldrick':105,'Bill McCabe':83,'John Goldrick':96,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':85,'Jay Goldrick':95},
-  2009: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick Sr.':100,'Tim McCabe':81,'Gary Micetich':80,'Kyle Nieman':96,'Mike Goldrick':105,'Bill McCabe':83,'John Goldrick':96,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':85,'Jay Goldrick':95},
-  2010: {'Bill Crawford':76,'Tom Goldrick':86,'Joe Goldrick Sr.':90,'Tim McCabe':83,'Gary Micetich':80,'Kyle Nieman':89,'Mike Goldrick':92,'Bill McCabe':79,'John Goldrick':103,'Fred Gamber':85,'Danny Goldrick':88,'Tom Goldrick Jr.':98,'Joe Goldrick Jr.':93,'Jay Goldrick':97,'Jack Goldrick Jr.':96,'Bill Pierce':88,'Jack Pierce':73,'Ryan Pierce':87},
-  2011: {'Bill Crawford':81,'Tom Goldrick':86,'Joe Goldrick Sr.':104,'Tim McCabe':90,'Gary Micetich':87,'Kyle Nieman':97,'Mike Goldrick':108,'Bill McCabe':81,'John Goldrick':91,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':86,'Jay Goldrick':89,'Jack Goldrick Jr.':96,'Bill Pierce':87,'Jack Pierce':81,'Ryan Pierce':94},
-  2012: {'Bill Crawford':76,'Tom Goldrick':90,'Joe Goldrick Sr.':104,'Tim McCabe':90,'Gary Micetich':87,'Kyle Nieman':97,'Mike Goldrick':108,'Bill McCabe':81,'John Goldrick':91,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':86,'Jay Goldrick':89,'Jack Goldrick Jr.':96,'Bill Pierce':87,'Jack Pierce':81,'Ryan Pierce':94},
-  2017: {'Bill Crawford':83,'Tom Goldrick':89,'Joe Goldrick Sr.':98,'Tim McCabe':90,'Gary Micetich':88,'Kyle Nieman':91,'Mike Goldrick':119,'Bill McCabe':83,'John Goldrick':92,'Fred Gamber':82,'Danny Goldrick':81,'Tom Goldrick Jr.':93,'Joe Goldrick Jr.':81,'Jay Goldrick':89,'Jack Goldrick Jr.':99,'Jack Pierce':71,'Ryan Pierce':90,'George McCabe':102,'Will McCabe':80,'Patrick McCabe':null,'Tim Goldrick':123,'Martin Goldrick':105},
+  2009: {'Bill Crawford':76,'Tom Goldrick':86,'Joe Goldrick Sr.':90,'Tim McCabe':83,'Gary Micetich':80,'Kyle Nieman':89,'Mike Goldrick':92,'Bill McCabe':79,'John Goldrick':103,'Fred Gamber':85,'Danny Goldrick':88,'Tom Goldrick Jr.':98,'Joe Goldrick Jr.':93,'Jay Goldrick':97,'Jack Goldrick Jr.':96,'Bill Pierce':88,'Jack Pierce':73,'Ryan Pierce':87},
+  2010: {'Bill Crawford':81,'Tom Goldrick':86,'Joe Goldrick Sr.':104,'Tim McCabe':90,'Gary Micetich':87,'Kyle Nieman':97,'Mike Goldrick':108,'Bill McCabe':81,'John Goldrick':91,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':86,'Jay Goldrick':89,'Jack Goldrick Jr.':96,'Bill Pierce':87,'Jack Pierce':81,'Ryan Pierce':94},
+  2011: {'Bill Crawford':76,'Tom Goldrick':90,'Joe Goldrick Sr.':104,'Tim McCabe':90,'Gary Micetich':87,'Kyle Nieman':97,'Mike Goldrick':108,'Bill McCabe':81,'John Goldrick':91,'Fred Gamber':86,'Danny Goldrick':88,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':86,'Jay Goldrick':89,'Jack Goldrick Jr.':96,'Bill Pierce':87,'Jack Pierce':81,'Ryan Pierce':94},
+  2014: {'Bill Crawford':79,'Tom Goldrick':84,'Joe Goldrick Sr.':97,'Tim McCabe':82,'Gary Micetich':86,'Kyle Nieman':90,'Mike Goldrick':98,'Bill McCabe':76,'John Goldrick':101,'Fred Gamber':80,'Danny Goldrick':84,'Tom Goldrick Jr.':87,'Joe Goldrick Jr.':87,'Jack Goldrick Jr.':83,'Jack Pierce':73,'Ryan Pierce':89,'George McCabe':106,'Martin Goldrick':114},
+  2015: {'Bill Crawford':82,'Tom Goldrick':91,'Joe Goldrick Sr.':96,'Tim McCabe':82,'Gary Micetich':86,'Kyle Nieman':88,'Mike Goldrick':102,'Bill McCabe':80,'John Goldrick':87,'Fred Gamber':82,'Danny Goldrick':90,'Tom Goldrick Jr.':89,'Joe Goldrick Jr.':81,'Jack Goldrick Jr.':96,'Jack Pierce':79,'Ryan Pierce':90,'George McCabe':106,'Martin Goldrick':105},
+  2017: {'Bill Crawford':83,'Tom Goldrick':89,'Joe Goldrick Sr.':98,'Tim McCabe':90,'Gary Micetich':88,'Kyle Nieman':91,'Mike Goldrick':119,'Bill McCabe':83,'John Goldrick':92,'Fred Gamber':82,'Danny Goldrick':81,'Tom Goldrick Jr.':93,'Joe Goldrick Jr.':81,'Jay Goldrick':89,'Jack Goldrick Jr.':99,'Jack Pierce':71,'Ryan Pierce':90,'George McCabe':102,'Will McCabe':80,'Tim Goldrick':123,'Martin Goldrick':105},
   2018: {'Bill Crawford':83,'Tom Goldrick':92,'Joe Goldrick Sr.':103,'Tim McCabe':84,'Gary Micetich':93,'Kyle Nieman':88,'Mike Goldrick':109,'Bill McCabe':78,'John Goldrick':98,'Fred Gamber':82,'Danny Goldrick':79,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':84,'Jay Goldrick':95,'Jack Goldrick Jr.':97,'Jack Pierce':76,'Ryan Pierce':89,'George McCabe':105,'Will McCabe':79,'Tim Goldrick':98,'Martin Goldrick':113},
   2019: {'Bill Crawford':82,'Tom Goldrick':86,'Joe Goldrick Sr.':104,'Tim McCabe':83,'Gary Micetich':84,'Kyle Nieman':92,'Mike Goldrick':105,'Bill McCabe':80,'John Goldrick':100,'Fred Gamber':87,'Danny Goldrick':85,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':85,'Jay Goldrick':91,'Jack Goldrick Jr.':87,'Jack Pierce':80,'Ryan Pierce':89,'George McCabe':98,'Will McCabe':90,'Patrick McCabe':100,'TJ McCabe':99,'Tim Goldrick':102},
   2021: {'Bill Crawford':75,'Tom Goldrick':91,'Joe Goldrick Sr.':107,'Tim McCabe':92,'Gary Micetich':92,'Kyle Nieman':101,'Mike Goldrick':108,'Bill McCabe':78,'John Goldrick':90,'Fred Gamber':82,'Danny Goldrick':85,'Tom Goldrick Jr.':90,'Joe Goldrick Jr.':85,'Jay Goldrick':91,'Jack Goldrick Jr.':87,'Jack Pierce':80,'Ryan Pierce':89,'George McCabe':98,'Will McCabe':90,'Patrick McCabe':100,'TJ McCabe':99,'Tim Goldrick':102,'Martin Goldrick':100},
-  2022: {'Bill Crawford':74,'Tom Goldrick':95,'Joe Goldrick Sr.':null,'Tim McCabe':87,'Gary Micetich':94,'Kyle Nieman':100,'Mike Goldrick':120,'Bill McCabe':78,'John Goldrick':97,'Fred Gamber':84,'Danny Goldrick':null,'Tom Goldrick Jr.':84,'Joe Goldrick Jr.':82,'Jay Goldrick':null,'Jack Goldrick Jr.':88,'Jack Pierce':74,'Ryan Pierce':85,'George McCabe':110,'Will McCabe':78,'Patrick McCabe':94,'TJ McCabe':93,'Tim Goldrick':null,'Martin Goldrick':109},
-  2023: {'Bill Crawford':74,'Tom Goldrick':93,'Tim McCabe':87,'Gary Micetich':86,'Kyle Nieman':94,'Mike Goldrick':105,'Bill McCabe':81,'Patrick McCabe':99,'John Goldrick':90,'Fred Gamber':85,'Danny Goldrick':94,'Tom Goldrick Jr.':84,'Joe Goldrick Jr.':82,'Jack Goldrick Jr.':96,'Jack Pierce':null,'Ryan Pierce':85,'George McCabe':102,'Will McCabe':76,'Martin Goldrick':106,'Jay Goldrick':null,'TJ McCabe':null,'Tim Goldrick':null},
-  2024: {'Bill Crawford':79,'Tom Goldrick':93,'Joe Goldrick Sr.':null,'Tim McCabe':83,'Gary Micetich':85,'Kyle Nieman':94,'Mike Goldrick':116,'Bill McCabe':87,'Patrick McCabe':85,'John Goldrick':90,'Fred Gamber':81,'Danny Goldrick':85,'Tom Goldrick Jr.':92,'Joe Goldrick Jr.':90,'Jack Goldrick Jr.':88,'Jack Pierce':76,'Ryan Pierce':87,'George McCabe':98,'Will McCabe':71,'Martin Goldrick':null,'Jay Goldrick':null,'TJ McCabe':87,'Tim Goldrick':null},
-  2025: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick Sr.':null,'Tim McCabe':87,'Gary Micetich':84,'Kyle Nieman':99,'Mike Goldrick':106,'Bill McCabe':76,'Patrick McCabe':89,'John Goldrick':97,'Fred Gamber':80,'Danny Goldrick':77,'Tom Goldrick Jr.':94,'Joe Goldrick Jr.':90,'Jack Goldrick Jr.':96,'Jack Pierce':77,'Ryan Pierce':85,'George McCabe':91,'Will McCabe':70,'Martin Goldrick':98,'Jay Goldrick':null,'TJ McCabe':99,'Tim Goldrick':null},
+  2022: {'Bill Crawford':74,'Tom Goldrick':95,'Tim McCabe':87,'Gary Micetich':94,'Kyle Nieman':100,'Mike Goldrick':120,'Bill McCabe':78,'John Goldrick':97,'Fred Gamber':84,'Tom Goldrick Jr.':84,'Joe Goldrick Jr.':82,'Jack Goldrick Jr.':88,'Jack Pierce':74,'Ryan Pierce':85,'George McCabe':110,'Will McCabe':78,'Patrick McCabe':94,'TJ McCabe':93,'Martin Goldrick':109},
+  2023: {'Bill Crawford':74,'Tom Goldrick':93,'Tim McCabe':87,'Gary Micetich':86,'Kyle Nieman':94,'Mike Goldrick':105,'Bill McCabe':81,'Patrick McCabe':99,'John Goldrick':90,'Fred Gamber':85,'Danny Goldrick':94,'Tom Goldrick Jr.':84,'Joe Goldrick Jr.':82,'Jack Goldrick Jr.':96,'Ryan Pierce':85,'George McCabe':102,'Will McCabe':76,'Martin Goldrick':106},
+  2024: {'Bill Crawford':79,'Tom Goldrick':93,'Tim McCabe':83,'Gary Micetich':85,'Kyle Nieman':94,'Mike Goldrick':116,'Bill McCabe':87,'Patrick McCabe':85,'John Goldrick':90,'Fred Gamber':81,'Danny Goldrick':85,'Tom Goldrick Jr.':92,'Joe Goldrick Jr.':90,'Jack Goldrick Jr.':88,'Jack Pierce':76,'Ryan Pierce':87,'George McCabe':98,'Will McCabe':71,'TJ McCabe':87},
+  2025: {'Bill Crawford':76,'Tom Goldrick':87,'Tim McCabe':87,'Gary Micetich':84,'Kyle Nieman':99,'Mike Goldrick':106,'Bill McCabe':76,'Patrick McCabe':89,'John Goldrick':97,'Fred Gamber':80,'Danny Goldrick':77,'Tom Goldrick Jr.':94,'Joe Goldrick Jr.':90,'Jack Goldrick Jr.':96,'Jack Pierce':77,'Ryan Pierce':85,'George McCabe':91,'Will McCabe':70,'Martin Goldrick':98,'TJ McCabe':99},
 };
 
 // All unique players across all years
@@ -1421,8 +1424,8 @@ function renderAlltimeStats() {
   document.getElementById('alltime-stats-grid').innerHTML = `
     <div class="stat-card">
       <div class="stat-card-eyebrow">Years on Record</div>
-      <div class="stat-card-value">29</div>
-      <div class="stat-card-label">1997 – 2025</div>
+      <div class="stat-card-value">31</div>
+      <div class="stat-card-label">1994 – 2025</div>
     </div>
     <div class="stat-card">
       <div class="stat-card-eyebrow">Best Recorded Gross</div>
@@ -1437,7 +1440,7 @@ function renderAlltimeStats() {
     <div class="stat-card">
       <div class="stat-card-eyebrow">Longest Active Streak</div>
       <div class="stat-card-value">29</div>
-      <div class="stat-card-label">Bill Crawford, 1997–2025</div>
+      <div class="stat-card-label">Bill Crawford, 1994–2025</div>
     </div>
   `;
 }
