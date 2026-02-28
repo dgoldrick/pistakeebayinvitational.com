@@ -1042,17 +1042,23 @@ footer {
 // ── PASSWORD ──
 // Change this to your desired password
 const SITE_PASSWORD = 'pistakee2025';
+const AUTH_KEY = 'pbi_auth';
+
+function unlockSite() {
+  document.getElementById('gate').classList.add('fade-out');
+  setTimeout(() => {
+    document.getElementById('gate').style.display = 'none';
+    const site = document.getElementById('site');
+    site.classList.add('visible');
+  }, 800);
+}
 
 function checkPassword() {
   const input = document.getElementById('gate-password').value;
   const error = document.getElementById('gate-error');
   if (input.toLowerCase() === SITE_PASSWORD) {
-    document.getElementById('gate').classList.add('fade-out');
-    setTimeout(() => {
-      document.getElementById('gate').style.display = 'none';
-      const site = document.getElementById('site');
-      site.classList.add('visible');
-    }, 800);
+    localStorage.setItem(AUTH_KEY, 'true');
+    unlockSite();
   } else {
     const pw = document.getElementById('gate-password');
     pw.classList.remove('shake');
@@ -1062,6 +1068,12 @@ function checkPassword() {
     pw.value = '';
     setTimeout(() => pw.classList.remove('shake'), 400);
   }
+}
+
+// Auto-unlock if already authenticated
+if (localStorage.getItem(AUTH_KEY) === 'true') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('site').classList.add('visible');
 }
 
 // Allow Enter key

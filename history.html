@@ -619,6 +619,12 @@ footer {
   .tl-empty, .tl-empty-right { display: none; }
 }
 </style>
+<script>
+// Auth gate — redirect to homepage if not authenticated
+if (localStorage.getItem('pbi_auth') !== 'true') {
+  window.location.href = 'index.html';
+}
+</script>
 </head>
 <body>
 
@@ -669,27 +675,73 @@ footer {
     <div class="section-rule"></div>
     <div class="body-text">
       <p>
-        Sometime in the 1950s, on the shores of <strong>Pistakee Bay</strong> in McHenry, Illinois, a group of men decided to make a golf outing into something more. What began as an informal gathering became, over time, one of the most enduring traditions in the family — an annual tournament played every summer, without fail, for over seventy years.
+        Sometime in the 1950s, a group of South Side Chicago men — friends, neighbors, fellow parishioners — began gathering each summer at <strong>Pistakee Bay Country Club</strong> on West Bay Road in McHenry, Illinois for a golf outing. What began informally became, over time, one of the most enduring traditions either family would ever know.
       </p>
       <p>
-        The early years belong to the founding generation: <strong>Bill Crawford, Tom Goldrick, Joe Goldrick, Tim McCabe, Gary Micetich, Bill McCabe, John Goldrick, Mike Goldrick</strong>, and others who first teed it up together at <strong>Pistakee Bay Country Club</strong> on West Bay Road. The club sat at the edge of the bay, a classic nine-hole layout that would host the tournament for decades.
+        At the center of it were two men: <strong>John "Jack" T. Goldrick</strong> and <strong>George C. McCabe</strong>. Both were products of Chicago's South Side Irish Catholic community. Both were <strong>U.S. Navy veterans of World War II</strong> — Goldrick stationed in the Pacific, McCabe also in service to his country. Both came home, built careers, raised large families, and found lifelong joy in the game of golf.
       </p>
       <p>
-        The format was simple then and remains largely the same today: four nine-hole scrambles spread across Friday, and one eighteen-hole stroke play round to crown the champion. The stroke play scores became the basis for handicaps the following year — your past performance set your starting point, a built-in mechanism that kept the competition honest and gave everyone a fighting chance.
+        Jack Goldrick was a solo attorney who opened his law office at 81st and Ashland and worked for decades helping ordinary people with real estate and estate planning — including, his son Tom noted, those who couldn't afford to pay him. He moved to Beverly in 1957 and raised nine children. He was well-read, told great jokes, loved the outdoors, and according to his family, found interest and joy in just about everything.
+      </p>
+      <p>
+        George McCabe was an insurance executive who eventually founded his own firm. A member of Olympia Fields Country Club for 52 years, he was, by every account, as devoted to golf as he was to his family. He raised six children, was a beloved husband for 65 years, and was described by those who knew him as a man of genuine warmth and deep roots in his community.
       </p>
 
       <div class="pull-quote">
-        <p>Every year we come back — older, a little slower off the tee, and absolutely certain that this is the year we finally win the thing.</p>
-        <cite>— A Tournament Competitor, sentiments shared widely</cite>
+        <p>He took great pleasure in spending time with his family on the golf course in later years.</p>
+        <cite>— Tom Goldrick, on his father Jack</cite>
       </div>
 
       <p>
-        Pistakee Bay Country Club has since closed — the property sold, the course gone. But the tournament carries its name and its spirit forward. The men who started it taught their sons to play. Those sons brought their own sons. Today, <strong>three generations of Goldricks, McCabes, Pierces, and their friends</strong> gather each June to continue what the founding generation started.
+        Together — along with a circle of friends whose names fill the early scorecards — they built something that neither set out to build: a <strong>living institution</strong>. The men who started it taught their sons to play. Those sons brought their own sons. Today, over seventy years after the first round was played on the shores of Pistakee Bay, their grandchildren tee it up together every summer.
       </p>
       <p>
-        The scorecard has changed. The players have changed. The stories told at the 19th hole have gotten longer and more embellished with each passing year. But the tournament endures.
+        Pistakee Bay Country Club has since closed — the property sold, the course gone. But the tournament carries its name forward. Jack Goldrick died in July 2012 at age 87. George McCabe died in June 2017 at age 90. The tournament they helped start plays on in their memory.
       </p>
     </div>
+  </div>
+</section>
+
+<!-- FOUNDERS TRIBUTE -->
+<section style="background:var(--green-deep); padding:5rem 2rem;">
+  <div style="max-width:900px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <div class="section-eyebrow" style="color:var(--gold);">In Memory</div>
+      <h2 class="section-title" style="color:var(--cream);">The Men Who Started It</h2>
+      <div class="section-rule" style="background:var(--gold); margin:1rem auto 0;"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(196,145,58,0.25); border-radius:4px; padding:2.5rem 2rem; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right, transparent, var(--gold), transparent);"></div>
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.25em; color:var(--gold); opacity:0.7; margin-bottom:0.6rem;">Founder</div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;">John "Jack" T. Goldrick</div>
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.15em; color:rgba(196,145,58,0.55); margin-bottom:1.5rem;">1925 – 2012 &nbsp;·&nbsp; Beverly, Chicago</div>
+        <div style="font-family:'EB Garamond',serif; font-size:0.95rem; color:rgba(240,219,160,0.65); line-height:1.85;">
+          <div style="margin-bottom:0.5rem;">⚓ U.S. Navy, WWII Pacific</div>
+          <div style="margin-bottom:0.5rem;">⚖️ Attorney, Beverly neighborhood</div>
+          <div style="margin-bottom:0.5rem;">👨‍👩‍👧‍👦 Husband, father of nine</div>
+          <div>⛳ Golfer, gardener, storyteller</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(196,145,58,0.25); border-radius:4px; padding:2.5rem 2rem; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right, transparent, var(--gold), transparent);"></div>
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.25em; color:var(--gold); opacity:0.7; margin-bottom:0.6rem;">Founder</div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;">George C. McCabe</div>
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.15em; color:rgba(196,145,58,0.55); margin-bottom:1.5rem;">1926 – 2017 &nbsp;·&nbsp; Flossmoor, Illinois</div>
+        <div style="font-family:'EB Garamond',serif; font-size:0.95rem; color:rgba(240,219,160,0.65); line-height:1.85;">
+          <div style="margin-bottom:0.5rem;">⚓ U.S. Navy, WWII</div>
+          <div style="margin-bottom:0.5rem;">💼 Insurance executive & founder</div>
+          <div style="margin-bottom:0.5rem;">👨‍👩‍👧‍👦 Husband of 65 years, father of six</div>
+          <div>⛳ Olympia Fields CC, 52 years</div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center; margin-top:2.5rem; font-family:'EB Garamond',serif; font-style:italic; font-size:1rem; color:rgba(240,219,160,0.45); line-height:1.7;">
+      Two South Side Irishmen. Two Navy veterans. One tournament that outlasted them both.
+    </p>
   </div>
 </section>
 
@@ -698,60 +750,46 @@ footer {
   <div class="generations-inner">
     <div class="gen-header">
       <div class="section-eyebrow">The Families</div>
-      <h2 class="section-title">Three Generations</h2>
+      <h2 class="section-title">The Generations</h2>
       <div class="section-rule" style="margin:1rem auto 0;"></div>
     </div>
     <div class="gen-grid">
 
       <div class="gen-card">
-        <div class="gen-number">First Generation</div>
-        <div class="gen-title">The Founders</div>
+        <div class="gen-number">Founding Generation</div>
+        <div class="gen-title">The Originators</div>
         <div class="gen-era">1950s – 1980s</div>
         <div class="gen-names">
-          <span>Tom Goldrick Sr.</span>
-          <span>Joe Goldrick Sr.</span>
-          <span>John Goldrick</span>
-          <span>Mike Goldrick Sr.</span>
-          <span>Bill McCabe</span>
-          <span>Tim McCabe</span>
-          <span>Bill Crawford</span>
-          <span>Gary Micetich</span>
-          <span>Kyle Nieman</span>
-          <span>Mike Dore</span>
-          <span>Fred Gamber</span>
-          <span>George Wray</span>
-          <span>Jack Desmond</span>
+          <span>Jack Goldrick</span>
+          <span>George McCabe</span>
+          <span style="opacity:0.5; font-style:italic; font-size:0.82rem;">& their contemporaries</span>
         </div>
       </div>
 
       <div class="gen-card">
         <div class="gen-number">Second Generation</div>
         <div class="gen-title">Sons of the Founders</div>
-        <div class="gen-era">1990s – 2010s</div>
+        <div class="gen-era">1980s – Present</div>
         <div class="gen-names">
-          <span>Dan Goldrick</span>
-          <span>Jay Goldrick</span>
-          <span>Tom Goldrick Jr.</span>
-          <span>Joe Goldrick Jr.</span>
-          <span>Tim Goldrick</span>
-          <span>Martin Goldrick</span>
-          <span>George McCabe</span>
-          <span>Will McCabe</span>
-          <span>Patrick McCabe</span>
-          <span>TJ McCabe</span>
+          <span>Tom, Joe, John, Mike Goldrick</span>
+          <span>Tim, Bill, Tom McCabe</span>
+          <span>Bill Crawford</span>
+          <span>Gary Micetich</span>
+          <span>Kyle Nieman</span>
+          <span>Fred Gamber</span>
           <span>Bill Pierce</span>
-          <span>Jack Pierce</span>
-          <span>Ryan Pierce</span>
         </div>
       </div>
 
       <div class="gen-card">
         <div class="gen-number">Third Generation</div>
-        <div class="gen-title">The Next Wave</div>
-        <div class="gen-era">2010s – Present</div>
+        <div class="gen-title">Grandsons & Beyond</div>
+        <div class="gen-era">2000s – Present</div>
         <div class="gen-names">
-          <span>Jack Goldrick Jr.</span>
-          <span>Tommie Goldrick Jr.</span>
+          <span>Dan, Jay, Tim, Martin Goldrick</span>
+          <span>Tom Jr., Joe Jr., Jack Jr.</span>
+          <span>George, Will, Patrick, TJ McCabe</span>
+          <span>Jack Pierce, Ryan Pierce</span>
           <span>And more to come...</span>
         </div>
       </div>
@@ -934,19 +972,30 @@ footer {
     <div class="section-rule"></div>
     <p class="body-text" style="max-width:650px; margin-bottom:0;">Every name that has appeared in the tournament records, from the first scorecards in 1996 through today. The founding generation in <span style="color:var(--gold);font-weight:600;">gold</span>.</p>
     <div class="player-roster">
-      <div class="player-chip founder">Bill Crawford</div>
-      <div class="player-chip founder">Tom Goldrick Sr.</div>
-      <div class="player-chip founder">Joe Goldrick Sr.</div>
-      <div class="player-chip founder">John Goldrick</div>
-      <div class="player-chip founder">Mike Goldrick Sr.</div>
-      <div class="player-chip founder">Tim McCabe</div>
-      <div class="player-chip founder">Bill McCabe</div>
-      <div class="player-chip founder">Gary Micetich</div>
-      <div class="player-chip founder">Kyle Nieman</div>
-      <div class="player-chip founder">Mike Dore</div>
-      <div class="player-chip founder">Fred Gamber</div>
-      <div class="player-chip founder">George Wray</div>
-      <div class="player-chip founder">Jack Desmond</div>
+      <div class="player-chip founder">Jack Goldrick</div>
+      <div class="player-chip founder">George McCabe</div>
+      <div class="player-chip" style="background:var(--cream-dark); font-style:italic; font-size:0.82rem; color:var(--text-light);">& their contemporaries</div>
+    </div>
+    <p style="margin-top:1.2rem; font-family:'EB Garamond',serif; font-size:1rem; color:var(--text-mid); font-weight:600;">Second Generation — Sons of the Founders</p>
+    <div class="player-roster">
+      <div class="player-chip">Tom Goldrick Sr.</div>
+      <div class="player-chip">Joe Goldrick Sr.</div>
+      <div class="player-chip">John Goldrick</div>
+      <div class="player-chip">Mike Goldrick Sr.</div>
+      <div class="player-chip">Tim McCabe</div>
+      <div class="player-chip">Bill McCabe</div>
+      <div class="player-chip">Tom McCabe</div>
+      <div class="player-chip">Bill Crawford</div>
+      <div class="player-chip">Gary Micetich</div>
+      <div class="player-chip">Kyle Nieman</div>
+      <div class="player-chip">Mike Dore</div>
+      <div class="player-chip">Fred Gamber</div>
+      <div class="player-chip">George Wray</div>
+      <div class="player-chip">Jack Desmond</div>
+      <div class="player-chip">Bill Pierce</div>
+    </div>
+    <p style="margin-top:1.2rem; font-family:'EB Garamond',serif; font-size:1rem; color:var(--text-mid); font-weight:600;">Third Generation — Grandsons & Current Players</p>
+    <div class="player-roster">
       <div class="player-chip">Dan Goldrick</div>
       <div class="player-chip">Jay Goldrick</div>
       <div class="player-chip">Tom Goldrick Jr.</div>
@@ -959,8 +1008,6 @@ footer {
       <div class="player-chip">Will McCabe</div>
       <div class="player-chip">Patrick McCabe</div>
       <div class="player-chip">TJ McCabe</div>
-      <div class="player-chip">George McCabe Sr.</div>
-      <div class="player-chip">Bill Pierce</div>
       <div class="player-chip">Jack Pierce</div>
       <div class="player-chip">Ryan Pierce</div>
     </div>

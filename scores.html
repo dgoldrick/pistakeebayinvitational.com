@@ -782,6 +782,12 @@ footer {
   .prior-score { display: none; }
 }
 </style>
+<script>
+// Auth gate — redirect to homepage if not authenticated
+if (localStorage.getItem('pbi_auth') !== 'true') {
+  window.location.href = 'index.html';
+}
+</script>
 </head>
 <body>
 
