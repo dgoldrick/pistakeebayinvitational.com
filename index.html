@@ -1058,6 +1058,7 @@ function checkPassword() {
   const error = document.getElementById('gate-error');
   if (input.toLowerCase() === SITE_PASSWORD) {
     localStorage.setItem(AUTH_KEY, 'true');
+    sessionStorage.setItem(AUTH_KEY, 'true');
     unlockSite();
   } else {
     const pw = document.getElementById('gate-password');
@@ -1071,7 +1072,7 @@ function checkPassword() {
 }
 
 // Auto-unlock if already authenticated
-if (localStorage.getItem(AUTH_KEY) === 'true') {
+if (localStorage.getItem(AUTH_KEY) === 'true' || sessionStorage.getItem(AUTH_KEY) === 'true') {
   document.getElementById('gate').style.display = 'none';
   document.getElementById('site').classList.add('visible');
 }
