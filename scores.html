@@ -826,6 +826,7 @@ footer {
 <div class="tab-bar">
   <button class="tab-btn active" onclick="showTab('leaderboard')">2026 Leaderboard</button>
   <button class="tab-btn" onclick="showTab('trophy')">Trophy Winners</button>
+  <button class="tab-btn" onclick="showTab('history')">Historical Scores</button>
   <button class="tab-btn" onclick="showTab('alltime')">All-Time Records</button>
 </div>
 
@@ -896,61 +897,131 @@ footer {
 </div>
 
 <!-- ══════════════════════════════════
-     PANEL 3: ALL-TIME RECORDS
+     PANEL 3: HISTORICAL SCORES
+══════════════════════════════════ -->
+<div class="panel" id="panel-history">
+  <div class="leaderboard-wrap">
+
+    <div class="lb-header">
+      <div class="lb-title-block">
+        <h2>Historical Score Records</h2>
+        <p>Stroke play gross scores, 1996–2025 · <span style="color:var(--gold);font-weight:600;">🏆 = Trophy winner that year</span></p>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <label style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;color:var(--text-light);">FILTER PLAYER:</label>
+        <select id="hist-player-filter" onchange="renderHistory()"
+          style="font-family:'EB Garamond',serif;font-size:0.95rem;padding:0.4rem 0.8rem;border:1px solid var(--cream-deeper);border-radius:3px;background:var(--white);color:var(--text);outline:none;">
+          <option value="all">All Players</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="lb-table-wrap">
+      <table id="hist-table">
+        <thead id="hist-thead"></thead>
+        <tbody id="hist-body"></tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:1.5rem;font-family:'EB Garamond',serif;font-style:italic;font-size:0.85rem;color:var(--text-light);text-align:center;">
+      These are stroke play gross scores used for handicap calculations. DNP = Did Not Play. 2013–2018 scores are on record but not yet digitized.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PANEL 4: ALL-TIME RECORDS
 ══════════════════════════════════ -->
 <div class="panel" id="panel-alltime">
   <div class="stats-wrap">
 
     <div class="trophy-header">
       <h2>All-Time Records</h2>
-      <p>Based on known results, 2011–2025</p>
+      <p>Based on known results, 1996–2025</p>
       <div class="trophy-rule"></div>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-card-eyebrow">Most Wins</div>
-        <div class="stat-card-value">2</div>
-        <div class="stat-card-label">Multiple players — see below</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card-eyebrow">Lowest Handicap (2026)</div>
-        <div class="stat-card-value">−2</div>
-        <div class="stat-card-label">Will McCabe</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card-eyebrow">Highest Handicap (2026)</div>
-        <div class="stat-card-value">+39</div>
-        <div class="stat-card-label">Mike Goldrick</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card-eyebrow">Years on Record</div>
-        <div class="stat-card-value">14</div>
-        <div class="stat-card-label">2011–2025 (excl. 2020 COVID)</div>
-      </div>
+    <div class="stats-grid" id="alltime-stats-grid">
+      <!-- populated by JS -->
     </div>
 
     <div class="multi-win-table">
-      <h3>🏆 Multiple Trophy Winners</h3>
+      <h3>🏆 Trophy Winners</h3>
       <div class="mw-row">
-        <span class="mw-name">Dan Goldrick</span>
-        <span class="mw-years">2024 · 2021?</span>
-        <span class="mw-wins">2 wins</span>
+        <span class="mw-name">John Goldrick</span>
+        <span class="mw-years">2011</span>
+        <span class="mw-wins">1 win</span>
       </div>
       <div class="mw-row">
-        <span class="mw-name">TJ McCabe</span>
-        <span class="mw-years">2024 · prior</span>
-        <span class="mw-wins">2 wins</span>
+        <span class="mw-name">Tom Goldrick Jr.</span>
+        <span class="mw-years">2012</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Bill McCabe</span>
+        <span class="mw-years">2013</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Jack Goldrick Jr.</span>
+        <span class="mw-years">2014</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Joe Goldrick Jr.</span>
+        <span class="mw-years">2015</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Gary Micetich</span>
+        <span class="mw-years">2016</span>
+        <span class="mw-wins">1 win</span>
       </div>
       <div class="mw-row">
         <span class="mw-name">Jack Pierce</span>
-        <span class="mw-years">2017 · prior</span>
-        <span class="mw-wins">noted in records</span>
+        <span class="mw-years">2017</span>
+        <span class="mw-wins">1 win</span>
       </div>
-    </div>
-
-    <div style="margin-top:2rem; background:var(--cream-dark); border-radius:4px; padding:1.5rem; font-family:'EB Garamond',serif; font-style:italic; color:var(--text-light); font-size:0.9rem; text-align:center;">
-      More historical records will be added as older scorecards are digitized. If you have records from pre-2011 tournaments, contact a tournament organizer.
+      <div class="mw-row">
+        <span class="mw-name">Tim Goldrick</span>
+        <span class="mw-years">2018</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Martin Goldrick</span>
+        <span class="mw-years">2019</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row" style="background:rgba(139,32,32,0.04);">
+        <span class="mw-name" style="font-style:italic;color:var(--text-light);">COVID-19</span>
+        <span class="mw-years">2020</span>
+        <span class="mw-wins" style="color:var(--text-light);">cancelled</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Bill Crawford</span>
+        <span class="mw-years">2021</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Patrick McCabe</span>
+        <span class="mw-years">2022</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row">
+        <span class="mw-name">Mike Goldrick</span>
+        <span class="mw-years">2023</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row" style="background:rgba(196,145,58,0.07);">
+        <span class="mw-name" style="font-weight:700;">Danny Goldrick</span>
+        <span class="mw-years">2025</span>
+        <span class="mw-wins">1 win</span>
+      </div>
+      <div class="mw-row" style="background:rgba(196,145,58,0.07);">
+        <span class="mw-name" style="font-weight:700;">TJ McCabe</span>
+        <span class="mw-years">2024</span>
+        <span class="mw-wins">1 win</span>
+      </div>
     </div>
 
   </div>
@@ -1003,7 +1074,7 @@ const players2026 = [
   { name: "Patrick McCabe",      hcp: 15,  score2024: 85,  score2025: 89,  gross: null, putts: null },
   { name: "John Goldrick",       hcp: 22,  score2024: 90,  score2025: 97,  gross: null, putts: null },
   { name: "Fred Gamber",         hcp: 9,   score2024: 81,  score2025: 80,  gross: null, putts: null },
-  { name: "Dan Goldrick",        hcp: 9,   score2024: 85,  score2025: 77,  gross: null, putts: null },
+  { name: "Danny Goldrick",        hcp: 9,   score2024: 85,  score2025: 77,  gross: null, putts: null },
   { name: "Joe Goldrick Jr.",    hcp: 14,  score2024: 82,  score2025: 90,  gross: null, putts: null },
   { name: "Tom Goldrick Jr.",    hcp: 21,  score2024: 92,  score2025: 94,  gross: null, putts: null },
   { name: "Jack Goldrick Jr.",   hcp: 20,  score2024: 88,  score2025: 96,  gross: null, putts: null },
@@ -1018,9 +1089,8 @@ const players2026 = [
 ];
 
 const trophyWinners = [
-  { year: 2025, name: "TBD",              note: "Tournament upcoming" },
-  { year: 2024, name: "Dan Goldrick",     note: "" },
-  { year: 2024, name: "TJ McCabe",        note: "Co-winner" },
+  { year: 2025, name: "Danny Goldrick",    note: "" },
+  { year: 2024, name: "TJ McCabe",         note: "" },
   { year: 2023, name: "Mike Goldrick",    note: "" },
   { year: 2022, name: "Patrick McCabe",   note: "" },
   { year: 2021, name: "Bill Crawford",    note: "" },
@@ -1123,14 +1193,8 @@ function renderTrophy() {
 }
 
 // ══════════════════════════════════════
-// TABS
+// TABS — see updated showTab below
 // ══════════════════════════════════════
-function showTab(name) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
-  event.target.classList.add('active');
-}
 
 // ══════════════════════════════════════
 // ADMIN MODE
@@ -1240,8 +1304,153 @@ function saveScore() {
 }
 
 // ══════════════════════════════════════
-// INIT
+// HISTORICAL DATA
 // ══════════════════════════════════════
+const YEARS = [1996,1999,2001,2002,2004,2006,2008,2009,2010,2012,2019,2021,2022,2023,2024,2025];
+
+const TROPHY_WINNERS = {
+  2025: ['Danny Goldrick'],
+  2024: ['TJ McCabe'],
+  2023: ['Mike Goldrick'],
+  2022: ['Patrick McCabe'],
+  2021: ['Bill Crawford'],
+  2019: ['Martin Goldrick'],
+  2018: ['Tim Goldrick'],
+  2017: ['Jack Pierce'],
+  2016: ['Gary Micetich'],
+  2015: ['Joe Goldrick Jr.'],
+  2014: ['Jack Goldrick Jr.'],
+  2013: ['Bill McCabe'],
+  2012: ['Tom Goldrick Jr.'],
+  2011: ['John Goldrick'],
+};
+
+const HIST_SCORES = {
+  1996: {'Bill Crawford':77,'Mike Dore':88,'Tom Goldrick':84,'Joe Goldrick':96,'Tim McCabe':85,'Gary Micetich':87,'Kyle Nieman':90,'Mike Goldrick':105,'Bill McCabe':74,'John Goldrick':90},
+  1999: {'Bill Crawford':83,'Mike Dore':94,'Tom Goldrick':90,'Joe Goldrick':105,'Tim McCabe':80,'Gary Micetich':85,'Kyle Nieman':88,'Mike Goldrick':99,'Bill McCabe':83,'John Goldrick':95},
+  2001: {'Bill Crawford':77,'Mike Dore':90,'Tom Goldrick':87,'Joe Goldrick':101,'Tim McCabe':88,'Gary Micetich':92,'Kyle Nieman':84,'Mike Goldrick':104,'Bill McCabe':75,'John Goldrick':94},
+  2002: {'Bill Crawford':80,'Mike Dore':86,'Tom Goldrick':85,'Joe Goldrick':97,'Tim McCabe':78,'Gary Micetich':84,'Kyle Nieman':95,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':109,'Fred Gamber':89},
+  2004: {'Bill Crawford':75,'Mike Dore':87,'Tom Goldrick':77,'Joe Goldrick':97,'Tim McCabe':82,'Gary Micetich':84,'Kyle Nieman':99,'Mike Goldrick':103,'Bill McCabe':87,'John Goldrick':97,'Fred Gamber':83},
+  2006: {'Bill Crawford':78,'Tom Goldrick':84,'Joe Goldrick':108,'Tim McCabe':81,'Gary Micetich':83,'Kyle Nieman':91,'Mike Goldrick':101,'Bill McCabe':82,'John Goldrick':99,'Fred Gamber':84,'Danny Goldrick':85,'Joe Goldrick Jr.':95,'Tom Goldrick Jr.':93,'Jay Goldrick':97},
+  2008: {'Bill Crawford':76,'Tom Goldrick':92,'Joe Goldrick':107,'Tim McCabe':83,'Gary Micetich':83,'Kyle Nieman':93,'Mike Goldrick':99,'Bill McCabe':84,'John Goldrick':93,'Fred Gamber':83,'Danny Goldrick':82,'Joe Goldrick Jr.':91,'Tom Goldrick Jr.':87,'Jay Goldrick':113},
+  2009: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick':100,'Tim McCabe':81,'Gary Micetich':80,'Kyle Nieman':96,'Mike Goldrick':105,'Bill McCabe':83,'John Goldrick':96,'Fred Gamber':86,'Danny Goldrick':88,'Joe Goldrick Jr.':85,'Tom Goldrick Jr.':87,'Jay Goldrick':95},
+  2010: {'Bill Crawford':81,'Tom Goldrick':86,'Joe Goldrick':90,'Tim McCabe':83,'Gary Micetich':80,'Kyle Nieman':89,'Mike Goldrick':92,'Bill McCabe':79,'John Goldrick':103,'Fred Gamber':85,'Danny Goldrick':88,'Joe Goldrick Jr.':93,'Tom Goldrick Jr.':98,'Jay Goldrick':97,'Jack Goldrick Jr.':96,'Bill Pierce':88,'Jack Pierce':73,'Ryan Pierce':94},
+  2012: {'Bill Crawford':76,'Tom Goldrick':90,'Joe Goldrick':104,'Tim McCabe':90,'Gary Micetich':87,'Kyle Nieman':97,'Mike Goldrick':108,'Bill McCabe':81,'John Goldrick':91,'Fred Gamber':86,'Danny Goldrick':88,'Joe Goldrick Jr.':86,'Tom Goldrick Jr.':90,'Jay Goldrick':89,'Jack Goldrick Jr.':96,'Bill Pierce':87,'Jack Pierce':81,'Ryan Pierce':87},
+  2019: {'Bill Crawford':82,'Tom Goldrick':92,'Joe Goldrick':103,'Tim McCabe':84,'Gary Micetich':93,'Kyle Nieman':88,'Mike Goldrick':109,'Bill McCabe':78,'John Goldrick':98,'Fred Gamber':82,'Danny Goldrick':79,'Joe Goldrick Jr.':84,'Tom Goldrick Jr.':90,'Jack Goldrick Jr.':97,'Jack Pierce':76,'Ryan Pierce':89,'George McCabe':105,'Will McCabe':79,'Martin Goldrick':113,'Jay Goldrick':95,'Tim Goldrick':98},
+  2021: {'Bill Crawford':75,'Tom Goldrick':91,'Joe Goldrick':107,'Tim McCabe':92,'Gary Micetich':92,'Kyle Nieman':101,'Mike Goldrick':108,'Bill McCabe':78,'Patrick McCabe':100,'John Goldrick':90,'Fred Gamber':82,'Danny Goldrick':85,'Joe Goldrick Jr.':85,'Tom Goldrick Jr.':90,'Jack Goldrick Jr.':87,'Jack Pierce':80,'Ryan Pierce':89,'George McCabe':98,'Will McCabe':90,'Martin Goldrick':100,'Jay Goldrick':91,'TJ McCabe':99,'Tim Goldrick':102},
+  2022: {'Bill Crawford':75,'Tom Goldrick':91,'Joe Goldrick':107,'Tim McCabe':92,'Gary Micetich':92,'Kyle Nieman':101,'Mike Goldrick':108,'Bill McCabe':78,'Patrick McCabe':100,'John Goldrick':90,'Fred Gamber':82,'Danny Goldrick':85,'Joe Goldrick Jr.':85,'Tom Goldrick Jr.':90,'Jack Goldrick Jr.':87,'Jack Pierce':80,'Ryan Pierce':89,'George McCabe':98,'Will McCabe':90,'Martin Goldrick':100,'Jay Goldrick':91,'TJ McCabe':99,'Tim Goldrick':102},
+  2023: {'Bill Crawford':74,'Tom Goldrick':93,'Tim McCabe':87,'Gary Micetich':86,'Kyle Nieman':94,'Mike Goldrick':105,'Bill McCabe':81,'Patrick McCabe':99,'John Goldrick':90,'Fred Gamber':85,'Danny Goldrick':94,'Joe Goldrick Jr.':82,'Tom Goldrick Jr.':84,'Jack Goldrick Jr.':88,'Jack Pierce':74,'Ryan Pierce':85,'George McCabe':102,'Will McCabe':76,'Martin Goldrick':109,'Jay Goldrick':89,'TJ McCabe':93,'Tim Goldrick':111},
+  2024: {'Bill Crawford':79,'Tom Goldrick':93,'Joe Goldrick':104,'Tim McCabe':83,'Gary Micetich':85,'Kyle Nieman':94,'Mike Goldrick':116,'Bill McCabe':87,'Patrick McCabe':85,'John Goldrick':90,'Fred Gamber':81,'Danny Goldrick':85,'Joe Goldrick Jr.':82,'Tom Goldrick Jr.':92,'Jack Goldrick Jr.':88,'Jack Pierce':76,'Ryan Pierce':87,'George McCabe':98,'Will McCabe':71,'Martin Goldrick':106,'Jay Goldrick':89,'TJ McCabe':87,'Tim Goldrick':111},
+  2025: {'Bill Crawford':76,'Tom Goldrick':87,'Joe Goldrick':107,'Tim McCabe':87,'Gary Micetich':84,'Kyle Nieman':99,'Mike Goldrick':106,'Bill McCabe':76,'Patrick McCabe':89,'John Goldrick':97,'Fred Gamber':80,'Danny Goldrick':77,'Joe Goldrick Jr.':90,'Tom Goldrick Jr.':94,'Jack Goldrick Jr.':96,'Jack Pierce':77,'Ryan Pierce':85,'George McCabe':91,'Will McCabe':70,'Martin Goldrick':98,'Jay Goldrick':91,'TJ McCabe':99,'Tim Goldrick':102},
+};
+
+// All unique players across all years
+const ALL_HIST_PLAYERS = [...new Set(Object.values(HIST_SCORES).flatMap(y => Object.keys(y)))].sort();
+
+function isWinner(player, year) {
+  const winners = TROPHY_WINNERS[year] || [];
+  return winners.some(w => w.toLowerCase() === player.toLowerCase());
+}
+
+function renderHistory() {
+  const filter = document.getElementById('hist-player-filter').value;
+  const players = filter === 'all' ? ALL_HIST_PLAYERS : [filter];
+
+  // Header
+  const thead = document.getElementById('hist-thead');
+  thead.innerHTML = `<tr>
+    <th class="left">Player</th>
+    ${YEARS.map(y => `<th>${y}</th>`).join('')}
+  </tr>`;
+
+  // Body
+  const tbody = document.getElementById('hist-body');
+  tbody.innerHTML = '';
+
+  players.forEach(player => {
+    const tr = document.createElement('tr');
+    let cells = `<td class="left"><span class="player-name" style="font-size:0.92rem;">${player}</span></td>`;
+    YEARS.forEach(year => {
+      const gross = HIST_SCORES[year]?.[player];
+      const won = isWinner(player, year);
+      if (gross) {
+        const style = won ? 'font-weight:700;color:var(--green-deep);' : '';
+        const trophy = won ? ' 🏆' : '';
+        cells += `<td style="${style}">${gross}${trophy}</td>`;
+      } else {
+        cells += `<td style="color:var(--cream-deeper);font-size:0.75rem;font-style:italic;">—</td>`;
+      }
+    });
+    tr.innerHTML = cells;
+    tbody.appendChild(tr);
+  });
+}
+
+function initHistoryFilter() {
+  const sel = document.getElementById('hist-player-filter');
+  ALL_HIST_PLAYERS.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    sel.appendChild(opt);
+  });
+}
+
+// ══════════════════════════════════════
+// ALL-TIME STATS
+// ══════════════════════════════════════
+function renderAlltimeStats() {
+  // Best single gross score per player
+  let bestGross = { player: '', score: 999, year: 0 };
+  let worstGross = { player: '', score: 0, year: 0 };
+  Object.entries(HIST_SCORES).forEach(([year, players]) => {
+    Object.entries(players).forEach(([player, gross]) => {
+      if (gross < bestGross.score) bestGross = { player, score: gross, year: parseInt(year) };
+      if (gross > worstGross.score) worstGross = { player, score: gross, year: parseInt(year) };
+    });
+  });
+
+  document.getElementById('alltime-stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card-eyebrow">Years on Record</div>
+      <div class="stat-card-value">16</div>
+      <div class="stat-card-label">1996 – 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-eyebrow">Best Recorded Gross</div>
+      <div class="stat-card-value">${bestGross.score}</div>
+      <div class="stat-card-label">${bestGross.player}, ${bestGross.year}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-eyebrow">Lowest 2026 Handicap</div>
+      <div class="stat-card-value">−2</div>
+      <div class="stat-card-label">Will McCabe</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-eyebrow">Longest Active Streak</div>
+      <div class="stat-card-value">29</div>
+      <div class="stat-card-label">Bill Crawford, 1996–2025</div>
+    </div>
+  `;
+}
+
+// Updated showTab to init history on first load
+const _tabsInitialized = {};
+function showTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'history' && !_tabsInitialized.history) {
+    initHistoryFilter();
+    renderHistory();
+    _tabsInitialized.history = true;
+  }
+  if (name === 'alltime' && !_tabsInitialized.alltime) {
+    renderAlltimeStats();
+    _tabsInitialized.alltime = true;
+  }
+}
 loadFromStorage();
 renderLeaderboard();
 renderTrophy();
