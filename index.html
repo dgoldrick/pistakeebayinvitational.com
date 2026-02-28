@@ -914,7 +914,7 @@ footer {
       <div class="hero-est">Est. 1950s — McHenry, Illinois</div>
       <h1 class="hero-title">Pistakee Bay<br><span>Invitational</span></h1>
       <div class="hero-rule"></div>
-      <p class="hero-sub">A family golf tradition spanning generations,<br>played on the shores of Pistakee Bay.</p>
+      <p class="hero-sub">A family golf tradition spanning generations,<br>played in the heart of McHenry, Illinois.</p>
 
       <!-- COUNTDOWN -->
       <div class="countdown-section">
@@ -939,6 +939,24 @@ footer {
             <span class="countdown-number" id="cd-secs">—</span>
             <span class="countdown-unit-label">Seconds</span>
           </div>
+        </div>
+      </div>
+
+      <!-- TOURNAMENT INFO STRIP -->
+      <div style="display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+        <div style="text-align:center;">
+          <div style="font-family:'Cinzel',serif; font-size:0.5rem; letter-spacing:0.2em; color:rgba(196,145,58,0.6); margin-bottom:0.3rem;">DATES</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold-light);">June 5 – 6, 2026</div>
+        </div>
+        <div style="width:1px; background:rgba(196,145,58,0.2);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'Cinzel',serif; font-size:0.5rem; letter-spacing:0.2em; color:rgba(196,145,58,0.6); margin-bottom:0.3rem;">COURSE</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold-light);">Boone Creek Golf Club</div>
+        </div>
+        <div style="width:1px; background:rgba(196,145,58,0.2);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'Cinzel',serif; font-size:0.5rem; letter-spacing:0.2em; color:rgba(196,145,58,0.6); margin-bottom:0.3rem;">LOCATION</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold-light);">McHenry, Illinois</div>
         </div>
       </div>
     </div>
@@ -1085,7 +1103,7 @@ document.getElementById('gate-password').addEventListener('keydown', e => {
 
 // ── COUNTDOWN ──
 // Set your tournament date here: YYYY, MM (0-indexed), DD
-const TOURNAMENT_DATE = new Date(2025, 7, 1); // Aug 1, 2025 placeholder — update this!
+const TOURNAMENT_DATE = new Date(2026, 5, 5); // June 5, 2026 — Day 1, Boone Creek Golf Club
 
 function updateCountdown() {
   const now = new Date();
